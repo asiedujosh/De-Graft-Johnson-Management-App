@@ -1,0 +1,411 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    color: #1b1717;
+    background-color: #efefef;
+}
+
+.Navbar {
+    width: 100vw;
+    height: 4vh;
+    background: #076598;
+    color: #fff;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    -webkit-app-region: drag;
+}
+
+.back {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.button {
+    margin-bottom: 5%;
+}
+
+.Nav_left {
+    font-size: 1em;
+    /*font-weight: bold;*/
+    margin-left: 5%;
+    padding-top: 1vh;
+}
+
+.Nav_right {
+    text-align: center;
+    line-height: 2vh;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    -webkit-app-region: no-drag;
+}
+
+ul li {
+    text-decoration: none;
+    list-style-type: none;
+    margin-top: -1vh;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px;
+}
+
+li:hover {
+    cursor: pointer;
+    background: #efefef;
+    top: 0;
+}
+
+.client-cont {
+    margin: 0 auto;
+    height: 85vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+.logo-container {
+    width: 40%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.Logo {
+    width: 400px;
+    height: 400px;
+}
+
+.intro-face {
+    margin-top: 10%;
+    height: 45vh;
+}
+
+.djf-intro {
+    text-align: center;
+}
+
+.djf-intro span {
+    font-size: 1.2em;
+}
+
+h2 {
+    font-size: 3em;
+    font-weight: 600;
+}
+
+.btn {
+    display: block;
+    margin: 0 10px 0 10px;
+   /* border: 1px solid #f49602; */
+   /* background-color: #f49602; */
+    /*#076598*/
+    /*padding: 2px 5px 2px 5px;*/
+    width: 40%;
+    border-radius: 10px;
+    margin-top: 2%;
+    color: #fff;
+}
+
+.intro_btn {
+    margin-left: 10%;
+    width: 100vw;
+    text-align: center;
+}
+
+btn:focus {
+    outline: none;
+}
+
+.head-title {
+    font-size: 0.5em;
+    text-align: center;
+    font-weight: 700;
+}
+
+.clientHead {
+    font-size: 4em;
+    color: #000;
+}
+
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.form-control {
+    width: 80%;
+    border-radius: 5px;
+    height: 5vh;
+}
+
+.medical_info {
+    left: 0;
+    text-align: left;
+    margin-top: 2%;
+}
+
+textArea {
+    width: 100%;
+    height: 15vh;
+    margin-bottom: 1%;
+
+}
+
+.submit {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.head-title {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.record-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100vw;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #02679d;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+#profileContainer{
+    background: #efefef;
+    height: 100vh;
+    position: absolute;
+    width: 100vw;
+}
+
+#profileImg{
+    width: 130px;
+    height: 130px;
+    /*border-radius: 50%;*/
+}
+
+.img_cont{
+    margin: 10px auto;
+}
+
+#picContainer{
+    margin: 0 auto;
+    text-align: center;
+    background: #fff;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.label_title_on_head{
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.label_title_on_head_container{
+    border: 1px solid #fff;
+    height: 100%;
+    width: 95%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: #fff;
+    border-radius: 10px;
+}
+
+span{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.name_title{
+    font-size: 1.7em;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 1%;
+}
+
+.personalInfoOnClient{
+    border: 1px solid #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-top: 15%;
+    margin-left: 5%;
+    height: 100vh;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.personal, .label_input{
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 1.2em;
+    padding-top: 0.5em;
+}
+
+
+.label_input{
+    padding-top: 0;
+    margin-top: -15%;
+    text-align: left;
+    font-weight: 200;
+}
+
+.cond_btn{
+    width: 80%;
+}
+
+.condition_card, .donation_card{
+    border: 1px solid #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    height: 70vh;
+    margin-top: 5%;
+    background: #fff;
+}
+
+table{
+    text-align: center;
+}
+
+td{
+    text-align: left;
+    padding: 20px;
+}
+
+.cond_title{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 2%;
+}
+
+.nav_btn_container{
+    margin-top: 2%;
+}
+
+.nav-btn{
+    width: 100%;
+    width: 90%;
+    color: #000;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background: #fff;
+}
+
+.active{
+    background: #efefef;
+}
+
+.nav-btn:hover{
+    background: #efefef;
+}
+
+.btn-nav{
+	background: #efefef;
+}
+
+.nav-btn:hover{
+    background: #fff;
+}
+
+.plus{
+    background-color: #ea1d14;
+    border-radius: 50%;
+}
+
+.table_border{
+    height: 60vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+a:-webkit-any-link{
+    text-decoration:none !important;
+    }
+
+.profileDetailCardTitle{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.profDetails{
+    margin-top: -5%;
+    margin-bottom: 0;
+}
+/*Profile Data Information */
+.personalDetailsPro{
+	width: 90%; 
+	text-align: center;
+	margin-top: 4%;
+}
+
+.personRow{
+	margin-top: 1%;
+	
+}
+
+.prof_title{
+	text-align: center;
+	font-weight: 600;
+	margin-top: 2%;
+}
+
+.tabcontent{
+	display: none;
+}
+
+.tab-container{
+	height: 60vh;
+	overflow: hidden;
+	overflow-y: scroll; 
+}
+
+

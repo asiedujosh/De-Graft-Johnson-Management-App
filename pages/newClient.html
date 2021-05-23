@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>De-Graft Johnson Foundation</title>
+    <link href="../css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3 class="head-title">PERSONAL DETAILS FORM</h3>
+        <span class="back">
+            <a href="../index.html">
+                Back
+            </a>
+        </span>
+        <hr />
+        <div class="container client-cont">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Case Id</label>
+                        <input type="text" class="form-control" id="caseId" value="DJF-10234" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Add Patient Picture</label>
+                        <input type="file" id="patientPicture" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" class="form-control" id="date" name="date" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Name Of Caller</label>
+                        <input type="text" class="form-control" id="nameOfCaller" placeholder="Name Of Caller" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Caller Contact</label>
+                        <input type="text" class="form-control" id="callerContact" placeholder="Caller Contact" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Name Of Patient</label>
+                        <input type="text" class="form-control" id="nameOfPatient" placeholder="Patient Name" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-push-1">
+                    <div class="form-group">
+                        <label>Patient Contact</label>
+                        <input type="text" class="form-control" id="patientContact" placeholder="Patient Contact" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Location" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <input type="text" class="form-control" id="occupation" placeholder="Occupation" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" class="form-control" id="age" placeholder="Age" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <input type="text" class="form-control" id="sex" placeholder="Sex" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Marital Status</label>
+                        <input type="text" class="form-control" id="maritalStatus" placeholder="Condition" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-push-1">
+                    <div class="form-group">
+                        <label>Name Of Condition</label>
+                        <input type="text" class="form-control" id="nameOfCondition" placeholder="Purpose Of Cntact" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Purpose Of Contact</label>
+                        <input type="text" class="form-control" id="purposeOfContact" placeholder="Purpose Of Contact" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-push-1">
+                    <div class="form-group">
+                        <label>Condition Severity</label>
+                        <input type="text" class="form-control" id="conditionSeverity" placeholder="status" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Language Spoken</label>
+                        <input type="text" class="form-control" id="languageSpoken" placeholder="Language Spoken" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Religion</label>
+                        <input type="text" class="form-control" id="religion" placeholder="Religion" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="form-group">Medical History</label>
+                    <textArea colspan="3" class="form-control" id="medicalHistory" rows="3"></textArea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="form-group">Condition Description</label>
+                    <textArea colspan="3" class="form-control" id="conditionDiscription" rows="3"></textArea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Images of condition</label>
+                        <input type="file" id="sickConditionImage" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Processing Stage</label>
+                        <input type="text" class="form-control" id="processingStage" placeholder="Processing Stage" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="form-group">How did you hear of DJF</label>
+                    <input type="text" class="form-control" id="hearOfDjf" placeholder="" />
+                </div>
+            </div>
+            <div class="row button">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <span class="btn btn-primary submit" id="submit_info">
+                        Submit
+                    </span>
+                </div>
+                <div className="col-md-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script>
+    require('../Js/renderer.js')
+    </script>
+</body>
+
+</html>

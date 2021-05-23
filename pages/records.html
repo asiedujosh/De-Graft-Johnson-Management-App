@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>De-Graft Johnson Foundation</title>
+	<link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
+	<link href = "../css/style.css" rel = "stylesheet" />
+  </head>
+  <body>
+  <div class = "recordTable">
+			<h3 class = "head-title">
+			Records On Active Cases
+			</h3>
+			<span class = "back">
+				<a href = "../index.html">
+					Back
+				</a>
+			</span>
+			<div class = "record-info">
+				<span>No Of Cases: 30</span>
+				<span>No Of Beneficiaries: 13</span>
+				<span>No Of Closed Cases: 10</span>
+			</div>
+			<div>
+			<table class = "styled-table">
+				<thead>
+				<tr>
+				<td>Id</td>
+				<td>Case Id</td>
+				<td>Patient Name</td>
+				<td>Contact</td>
+				<td>Condition</td>
+				<td>Purpose Of Contact</td>
+				<td>Severity</td>
+				<td>Processing Stage</td>
+				<td colspan = "2">Action</td>
+				</tr>
+				</thead>
+				<tbody id = "tableBody">
+				<!--I am getting data from database here-->
+				</tbody>
+			</table>
+			</div>
+		</div>
+	<!-- You can also require other files to run in this process -->
+		<script>
+		require('../Js/renderRecords.js')
+		</script>
+  </body>
+</html>

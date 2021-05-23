@@ -1,0 +1,27 @@
+{
+  "name": "DJF-Management",
+  "version": "1.0.0",
+  "description": "De-Graft Johnson Management System",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Joshua Asiedu",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^12.0.5"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.4",
+    "sqlite3": "^5.0.2"
+  }
+}

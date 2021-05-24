@@ -5,6 +5,7 @@
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <title>De-Graft Johnson Foundation</title>
         <link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
+		<link href = "../css/fontawesome/css/all.min.css" rel = "stylesheet" />
         <link href = "../css/style.css" rel = "stylesheet" />
     </head>
     <body>
@@ -125,9 +126,207 @@
                     </div>
                     <div class = "row">
                         <div class = "col-md-12">
-                            <div class = "condition_card">
-                                <h4>Interview Information</h4>
-
+                           <div class = "condition_card" style = "margin-top: 1%;">
+							
+								<!-- Create dimemnsions for tabs -->
+							<div class = "fluid-container">
+							<div class = "row">
+							<div class = "col-md-2">
+							<div style = "margin-top: 50%" class = "tab">
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%" id = "printInterviewBtn"
+								>
+								<i class = "fa fa-print aria-hidden="true"></i>
+								Print
+								</span>
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%; margin-top: 10%"  
+								id = "editInterviewBtn"
+								>
+								<i class = "fas fa-edit"></i>
+								Edit
+								</span>
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%; margin-top: 10%"  
+								id = "addInterviewBtn"
+								>
+								<i class = "fas fa-edit"></i>
+								Add
+								</span>
+							</div>
+							</div>
+							<div class = "col-md-10">
+							<div class = "tabcontent" id = "InterviewTable">
+							<!-- One -->
+							<div class = "tab-container">
+							<h4 class = "prof_title">Danielle Interview Records</h4>
+							<div class = "container personalDetailsPro" >
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<table class= "table">
+										<thead>
+											<th>No</th>
+											<th>Interview Date</th>
+											<th>Description</th>
+											<th>Status</th>
+										</thead>
+									<tbody>
+									<tr>
+									    <td style = "text-align: center;">1</td>
+										<td style = "text-align: center;">29/07/20</td>
+										<td style = "text-align: center;">First Interview</td>
+										<td style = "text-align: center;">Pending</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">2</td>
+										<td style = "text-align: center;">8/02/21</td>
+										<td style = "text-align: center;">Second Interview</td>
+										<td style = "text-align: center;">Pending</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">3</td>
+										<td style = "text-align: center;">8/04/2</td>
+										<td style = "text-align: center;">Third Interview</td>
+										<td style = "text-align: center;">Pending</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">4</td>
+										<td style = "text-align: center;">8/04/20</td>
+										<td style = "text-align: center;">Fourth Interview</td>
+										<td style = "text-align: center;">Pending</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">5</td>
+										<td style = "text-align: center;">8/04/20</td>
+										<td style = "text-align: center;">Fifth Interview</td>
+										<td style = "text-align: center;">Pending</td>
+									</tr>
+									
+									</tbody>
+									</table>
+								</div>
+								</div>
+							</div>
+                            </div>
+							</div>
+							
+							
+							<div class = "tabcontent" id = "editInterview">
+							<!-- Two -->
+							<div class = "tab-container">
+							<h4 class = "prof_title">Edit Interview Records</h4>
+							<div class = "container personalDetailsPro" >
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<table class= "table">
+									<thead>
+									<th>No</th>
+									<th>Interview Date</th>
+									<th>Description</th>
+									<th>Status</th>
+									<th colspan= "2">Action</th>
+									</thead>
+									<tbody>
+									<tr>
+									    <td style = "text-align: center;">1</td>
+										<td style = "text-align: center;">29/07/20</td>
+										<td style = "text-align: center;">First Interview</td>
+										<td style = "text-align: center;">Pending</td>
+										<td colspan= "2" style = "text-align: center;">
+										<button class = "btn btn-warning" style = "width: 100%;">Achieved</button>
+										<button class = "btn btn-danger" style = "width: 100%;">Delete</button>
+										</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">2</td>
+										<td style = "text-align: center;">8/02/21</td>
+										<td style = "text-align: center;">Second Interview</td>
+										<td style = "text-align: center;">Pending</td>
+										<td colspan= "2" style = "text-align: center;">
+										<button class = "btn btn-warning" style = "width: 100%;">Achieved</button>
+										<button class = "btn btn-danger" style = "width: 100%;">Delete</button>
+										</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">3</td>
+										<td style = "text-align: center;">8/04/2</td>
+										<td style = "text-align: center;">Third Interview</td>
+										<td style = "text-align: center;">Pending</td>
+										<td colspan= "2" style = "text-align: center;">
+										<button class = "btn btn-warning" style = "width: 100%;">Achieved</button>
+										<button class = "btn btn-danger" style = "width: 100%;">Delete</button>
+										</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">4</td>
+										<td style = "text-align: center;">8/04/20</td>
+										<td style = "text-align: center;">Fourth Interview</td>
+										<td style = "text-align: center;">Pending</td>
+										<td colspan= "2" style = "text-align: center;">
+										<button class = "btn btn-warning" style = "width: 100%;">Achieved</button>
+										<button class = "btn btn-danger" style = "width: 100%;">Delete</button>
+										</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">5</td>
+										<td style = "text-align: center;">8/04/20</td>
+										<td style = "text-align: center;">Fifth Interview</td>
+										<td colspan= "2" style = "text-align: center;">Pending</td>
+										<td style = "text-align: center;">
+										<button class = "btn btn-warning" style = "width: 100%;">Achieved</button>
+										<button class = "btn btn-danger" style = "width: 100%;">Delete</button>
+										</td>
+									</tr>
+									
+									</tbody>
+									</table>
+								</div>
+								</div>
+							</div>
+                            </div>
+							</div>
+							
+							<div id = "addInterview" class = "tabcontent">
+							<div class = "tab-container">
+							<!-- Three -->
+							<h4 class = "prof_title">
+								Add Interview
+							</h4>
+							<div class = "container personalDetailsPro" >
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<label>Date:</label>
+									<input type = "date" class = "form-control"/>
+								</div>
+								</div>
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<label>Description:</label>
+									<textarea class = "form-control" rows="4"></textarea>
+								</div>
+								</div>
+													
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<button class = "btn btn-primary" 
+									style = "margin: 0 auto; margin-top: 2%;">
+										Set Interview
+									</button>
+								</div>
+								</div>
+							
+							</div>
+                            </div>
+							</div>
+							
+							
+							</div>
+							</div>
+							</div>
+							
+							
                             </div>
                         </div>
                     </div>
@@ -136,6 +335,7 @@
             </div>
         </div>
         <script>
+			require('../Js/interviewDetails.js')
            // require('../Js/renderViewProfile.js')
         </script>
     </body>

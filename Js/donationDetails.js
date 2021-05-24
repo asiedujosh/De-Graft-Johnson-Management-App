@@ -1,13 +1,8 @@
 //For personal detail page
-let firstButton = document.getElementById("printProfileBtn")
-let secondButton = document.getElementById("editProfileBtn")
-let thirdButton = document.getElementById("closeBtn")
+let firstButton = document.getElementById("printDonationBtn")
+let secondButton = document.getElementById("addDonationBtn")
 
-
-console.log(sessionStorage.getItem("profileInfo"))
-
-
-document.getElementById("printProfile").style.display = "block"
+document.getElementById("donationTable").style.display = "block"
 //Opencity function
 function displayTabBlock(tabName){
 	let i
@@ -25,17 +20,12 @@ function displayTabBlock(tabName){
 
 
 firstButton.addEventListener("click",()=>{
-	displayTabBlock("printProfile")
+	displayTabBlock("donationTable")
 })
 
 secondButton.addEventListener("click",()=>{
-	displayTabBlock("editProfile")
+	displayTabBlock("AddDonation")
 })
-
-thirdButton.addEventListener("click",()=>{
-	displayTabBlock("closeCase")
-})
-
 
 /*
 function openCity(evt, cityName){

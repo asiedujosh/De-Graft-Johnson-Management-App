@@ -5,6 +5,7 @@
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <title>De-Graft Johnson Foundation</title>
         <link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
+		<link href = "../css/fontawesome/css/all.min.css" rel = "stylesheet" />
         <link href = "../css/style.css" rel = "stylesheet" />
     </head>
     <body>
@@ -126,7 +127,52 @@
                     <div class = "row">
                         <div class = "col-md-12">
                             <div class = "condition_card">
-                                <h4>Receipt</h4>
+                       
+									<!-- Create dimemnsions for tabs -->
+							<div class = "fluid-container">
+							<div class = "row">
+							<div class = "col-md-2">
+							<div style = "margin-top: 50%" class = "tab">
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%" id = "printReceiptBtn"
+								>
+								<i class = "fa fa-print aria-hidden="true"></i>
+								Print
+								</span>
+							</div>
+							</div>
+							<div class = "col-md-10">
+							<div class = "tabcontent" id = "receipt">
+							<!-- One -->
+							<div class = "tab-container">
+							<h4 class = "prof_title">Receipt</h4>
+							<label>Donation Received</label>
+							<p>
+							An amount of .......... was received from .............. 
+							to the De-Graft Johnson Foundation for <br/>
+							........................................................
+							</p>
+							<span style = "font-size: 0.5em;">
+							This Receipt is to show and testify that an amount was recieved
+							from the donor to the De-Graft Johnson team
+							</span>
+							<span>Signed</span><br/>
+							<span>.............</span>
+							<span>Mr Richmond De-Graft Johnson(CEO)</span>
+                            </div>
+							</div>
+							
+							<!--Two-->
+							
+                            </div>
+							</div>
+							
+							
+							</div>
+							</div>
+							</div>
+								
+								
 
                             </div>
                         </div>
@@ -136,6 +182,7 @@
             </div>
         </div>
         <script>
+		require('../Js/receiptDetails.js')
            // require('../Js/renderViewProfile.js')
         </script>
     </body>

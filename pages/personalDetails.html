@@ -126,7 +126,7 @@
                     </div>
                     <div class = "row">
                         <div class = "col-md-12">
-                            <h4 class = "profileDetailCardTitle">Personal Information</h4>
+                           <!-- <h4 class = "profileDetailCardTitle">Personal Information</h4> -->
                         <div class = "condition_card" style = "margin-top: 1%;">
                             <!--Creating Tabs For the personal Info And edit -->
                             
@@ -136,22 +136,29 @@
 							<div class = "col-md-2">
 							<div style = "margin-top: 50%" class = "tab">
 								<span class = "btn nav-btn btn-nav" 
-								style = "width: 100%" id = "londonButton"
+								style = "width: 100%" id = "printProfileBtn"
 								>
 								<i class = "fa fa-print aria-hidden="true"></i>
 								Print
 								</span>
 								<span class = "btn nav-btn btn-nav" 
 								style = "width: 100%; margin-top: 10%"  
-								id = "parisButton"
+								id = "editProfileBtn"
 								>
 								<i class = "fas fa-edit"></i>
 								Edit
 								</span>
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%; margin-top: 10%"  
+								id = "closeBtn"
+								>
+								<i class = "fas fa-edit"></i>
+								Close Case
+								</span>
 							</div>
 							</div>
 							<div class = "col-md-10">
-							<div id = "London" class = "tabcontent">
+							<div id = "printProfile" class = "tabcontent">
 							<!-- One -->
 							<div class = "tab-container">
 							<h4 class = "prof_title">De-Graft Johnson Foundation Client Form</h4>
@@ -224,7 +231,7 @@
 							</div>
 							
 							<!--Two-->
-							<div id = "Paris" class = "tabcontent">
+							<div id = "editProfile" class = "tabcontent">
 							<div class = "tab-container">
 							<!-- One -->
 							<h4 class = "prof_title">De-Graft Johnson Foundation Edit Form</h4>
@@ -311,6 +318,32 @@
 									<button class = "btn btn-primary" 
 									style = "margin: 0 auto; margin-top: 2%;">
 										Edit
+									</button>
+								</div>
+								</div>
+							
+							</div>
+                            </div>
+							</div>
+							
+							<!--Two-->
+							<div id = "closeCase" class = "tabcontent">
+							<div class = "tab-container">
+							<!-- One -->
+							<h4 class = "prof_title">Close Case On Danielle</h4>
+							<div class = "container personalDetailsPro">
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									Are you sure you want to close case on Danielle
+								</div>
+								</div>
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<button class = "btn btn-primary" 
+									style = "margin: 0 auto; margin-top: 2%;">
+										Close
 									</button>
 								</div>
 								</div>

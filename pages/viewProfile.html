@@ -12,53 +12,54 @@
             <div class = "row row_container">
                 <div class = "col-md-2 img_cont">
                     <div class = "profilePicContainer" id = "picContainer">
-                        <img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/>
+                       <!-- <img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/> -->
                     </div>
                     <div class = "personalInfoOnClient">
                         <div>
-                            <label class = "personal">Case Id: DJF_09090</label>
+                            <label class = "personal" id = "caseId">Case Id: </label>
                         </div>
                         <div>
                             <label class = "personal">Name Of Patient</label>
-                            <span class = "label_input">Danielle Lovebird</span>
+                            <span class = "label_input" id = "nameOfPatient"></span>
                         </div>
                         <div>
                             <label class = "personal">Contact Of Patient</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "patientContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Name Of Caller</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "nameOfCaller"></span>
                         </div>
                          <div>
                             <label class = "personal">Caller Contact</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "callerContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Location</label>
-                            <span class = "label_input">North-Kaneshie</span>
+                            <span class = "label_input" id = "location"></span>
                         </div>
                         <div>
                             <label class = "personal">Occupation</label>
-                            <span class = "label_input">Bread Baker</span>
+                            <span class = "label_input" id = "occupation"></span>
                         </div>
                          <div>
                             <label class = "personal">Language Spoken</label>
-                            <span class = "label_input">Twi</span>
+                            <span class = "label_input" id = "language"></span>
                         </div>
                         <div>
                             <label class = "personal">Religion</label>
-                            <span class = "label_input">Christianity</span>
+                            <span class = "label_input" id = "religion"></span>
                         </div>
                     </div>
                 </div>
                 <div class = "col-md-10">
                     <div class = "row">
                         <div class = "col-md-12">
-                            <h3 class = "name_title">
-                                Danielle Lovebird
-                                <a href = "records.html" style = "font-size: 0.5em;">Home</a>
-                            </h3>
+                            <h3 class = "name_title" id = "nameTitle"></h3>
+							<a href = "records.html" 
+							style = "font-size: 0.7em; text-align: center; display: block; border: none;">
+							Home
+							</a>
                             <!--<span><a href = "records.html">Home</a></span>-->
                         </div>
                     </div>
@@ -66,13 +67,13 @@
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Condition</label>
-                            <span>Swollen Face</span>
+                            <span id = "condition">Swollen Face</span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Purpose Of Donation</label>
-                            <span>Funding for surgery</span>
+                            <span id = "purposeOfDon">Funding for surgery</span>
                             </div>
                         </div>
                         <div class = "col-md-3">
@@ -241,7 +242,7 @@
             </div>
         </div>
         <script>
-           // require('../Js/renderViewProfile.js')
+           require('../Js/renderViewProfile.js')
         </script>
     </body>
 </html>

@@ -79,20 +79,33 @@ ipcMain.handle('submit_helper_info', async (event, Argument) => {
 ipcMain.on('get_data_on_client', (event, arg) => {
     console.log(arg)
     let profileInfo = {}
-    DJF_database.get("SELECT profilePic, nameOfPatient, nameOfCondition,purposeOfContact FROM djf_client WHERE caseId = ?",
+    DJF_database.get("SELECT * FROM djf_client WHERE caseId = ?",
 	[arg], (err, row) => {
 		if(err){
 			return console.error(err.message)
 			}
 			if(row){
+				profileInfo.caseId = row.caseId
                 profileInfo.nameOfPatient = row.nameOfPatient
                 profileInfo.patientPic =  row.profilePic
+				profileInfo.patientContact = row.patientContact
+				profileInfo.nameOfCaller = row.nameOfCaller
+				profileInfo.callerContact = row.callerContact
                 profileInfo.nameOfCondition = row.nameOfCondition
                 profileInfo.purposeOfContact = row.purposeOfContact
+				profileInfo.occupation = row.occupation
+				profileInfo.language = row.languageSpoken
+				profileInfo.location = row.location
+				profileInfo.religion = row.religion
+				profileInfo.age = row.age
+				profileInfo.sex = row.sex
+				profileInfo.conditionSeverity = row.conditionSeverity
+				profileInfo.medicalHistory = row.medicalHistory
+				profileInfo.hearingMedium = row.hearingMedium
                 event.sender.send('reply_info', profileInfo)
                 }
             })
-            //console.log(profileInfo)
+            console.log(profileInfo)
             //Event emitter
 		})
 

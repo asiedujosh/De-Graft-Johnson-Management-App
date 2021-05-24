@@ -5,6 +5,7 @@
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <title>De-Graft Johnson Foundation</title>
         <link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
+		<link href = "../css/fontawesome/css/all.min.css" rel = "stylesheet" />
         <link href = "../css/style.css" rel = "stylesheet" />
     </head>
     <body>
@@ -125,9 +126,146 @@
                     </div>
                     <div class = "row">
                         <div class = "col-md-12">
-                            <div class = "condition_card">
-                                <h4>Donation Information</h4>
-
+						<!--<h4 class = "profileDetailCardTitle">Donation Information</h4> -->
+                            <div class = "condition_card" style = "margin-top: 1%;">
+							
+								<!-- Create dimemnsions for tabs -->
+							<div class = "fluid-container">
+							<div class = "row">
+							<div class = "col-md-2">
+							<div style = "margin-top: 50%" class = "tab">
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%" id = "printDonationBtn"
+								>
+								<i class = "fa fa-print aria-hidden="true"></i>
+								Print
+								</span>
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%; margin-top: 10%"  
+								id = "addDonationBtn"
+								>
+								<i class = "fas fa-edit"></i>
+								Add
+								</span>
+							</div>
+							</div>
+							<div class = "col-md-10">
+							<div class = "tabcontent" id = "donationTable">
+							<!-- One -->
+							<div class = "tab-container">
+							<h4 class = "prof_title">Danielle Donation Record</h4>
+							<div class = "container personalDetailsPro" >
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<table class= "table">
+									<thead>
+									<th>No</th>
+									<th>Date</th>
+									<th>Purpose</th>
+									<th>Items</th>
+									<th>Amount Donated</th>
+									</thead>
+									<tbody>
+									<tr>
+									    <td style = "text-align: center;">1</td>
+										<td style = "text-align: center;">29/07/20</td>
+										<td style = "text-align: center;">Hello world</td>
+										<td style = "text-align: center;">Drinks</td>
+										<td style = "text-align: center;">2,000</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">2</td>
+										<td style = "text-align: center;">8/02/21</td>
+										<td style = "text-align: center;">Condition One</td>
+										<td style = "text-align: center;">T-Roll</td>
+										<td style = "text-align: center;">2,500</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">3</td>
+										<td style = "text-align: center;">8/04/2</td>
+										<td style = "text-align: center;">Condition Two</td>
+										<td style = "text-align: center;">Water</td>
+										<td style = "text-align: center;">3,000</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">4</td>
+										<td style = "text-align: center;">8/04/20</td>
+										<td style = "text-align: center;">Condition Three</td>
+										<td style = "text-align: center;">Coffee</td>
+										<td style = "text-align: center;">1,000</td>
+									</tr>
+									<tr>
+									    <td style = "text-align: center;">5</td>
+										<td style = "text-align: center;">8/04/20</td>
+										<td style = "text-align: center;">Condition Four</td>
+										<td style = "text-align: center;">Tofees</td>
+										<td style = "text-align: center;">500</td>
+									</tr>
+									
+									</tbody>
+									</table>
+								</div>
+								</div>
+							</div>
+                            </div>
+							</div>
+							
+							<!--Two-->
+							<div id = "AddDonation" class = "tabcontent">
+							<div class = "tab-container">
+							<!-- One -->
+							<h4 class = "prof_title">
+								Add Donation
+							</h4>
+							<div class = "container personalDetailsPro" >
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<label>Date:</label>
+									<input type = "date" class = "form-control"/>
+								</div>
+								</div>
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<label>Purpose:</label>
+									<textarea class = "form-control" rows="4"></textarea>
+								</div>
+								</div>
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<label>Items:</label>
+									<input type = "text" class = "form-control"/>
+								</div>
+								</div>
+								
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<label>Amount:</label>
+									<input type = "text" class = "form-control"/>
+								</div>
+								</div>
+													
+								<div class = "row personRow">
+								<div class = "col-md-12">
+									<button class = "btn btn-primary" 
+									style = "margin: 0 auto; margin-top: 2%;">
+										Add
+									</button>
+								</div>
+								</div>
+							
+							</div>
+                            </div>
+							</div>
+							
+							
+							</div>
+							</div>
+							</div>
+							
+							
                             </div>
                         </div>
                     </div>
@@ -136,6 +274,7 @@
             </div>
         </div>
         <script>
+		require('../Js/donationDetails.js')
            // require('../Js/renderViewProfile.js')
         </script>
     </body>

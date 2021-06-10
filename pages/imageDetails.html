@@ -5,86 +5,109 @@
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <title>De-Graft Johnson Foundation</title>
         <link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
+		<link href = "../css/fontawesome/css/all.min.css" rel = "stylesheet" />
+		<script src="../js/jquery.min.js"></script>
         <link href = "../css/style.css" rel = "stylesheet" />
     </head>
     <body>
+		<div id = "background_svg">
+		<svg x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;">
+	<style type="text/css">
+		.st0{fill:url(#SVGID_1_);}
+		.st1{opacity:0.1;fill:#FFFFFF;}
+	</style>
+	<g>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="233.25" y1="1175.25" x2="1686.75" y2="-278.25">
+			<stop  offset="0.3467" style="stop-color:#0D189E"/>
+			<stop  offset="0.7098" style="stop-color:#662D91"/>
+		</linearGradient>
+		<path class="st0" d="M1920,942c0,0-511.26,93-945,93c-413.26,0-975-93-975-93V-45h1920V942z"/>
+	</g>
+	<path class="st1" d="M1995.85,1177.3H-18.85c-137.05,0-248.15-111.1-248.15-248.15v0c0-137.05,111.1-248.15,248.15-248.15
+		c0,0,403.46,222.95,1007.35,222.95s1007.35-222.95,1007.35-222.95c137.05,0,248.15,111.1,248.15,248.15v0
+		C2244,1066.19,2132.9,1177.3,1995.85,1177.3z"/>
+	<path class="st1" d="M1970.13,1218.43l-2011.6-111.62c-136.84-7.59-241.62-124.68-234.02-261.52l0,0
+		c7.59-136.84,124.68-241.62,261.52-234.02c0,0,390.49,244.96,993.45,278.42c602.96,33.46,1018.15-166.8,1018.15-166.8
+		c136.84,7.59,241.62,124.68,234.02,261.52v0C2224.06,1121.24,2106.97,1226.02,1970.13,1218.43z"/>
+		</svg>
+		</div>
         <div class = "fluid-container">
             <div class = "row row_container">
                 <div class = "col-md-2 img_cont">
                     <div class = "profilePicContainer" id = "picContainer">
-                        <img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/>
+                        <!--<img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/> -->
                     </div>
                     <div class = "personalInfoOnClient">
                         <div>
-                            <label class = "personal">Case Id: DJF_09090</label>
+                            <label class = "personal" id = "caseId">Case Id:</label>
                         </div>
                         <div>
                             <label class = "personal">Name Of Patient</label>
-                            <span class = "label_input">Danielle Lovebird</span>
+                            <span class = "label_input" id = "nameOfPatient"></span>
                         </div>
                         <div>
                             <label class = "personal">Contact Of Patient</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "patientContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Name Of Caller</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "nameOfCaller"></span>
                         </div>
                          <div>
                             <label class = "personal">Caller Contact</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "callerContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Location</label>
-                            <span class = "label_input">North-Kaneshie</span>
+                            <span class = "label_input" id = "clientLocation"></span>
                         </div>
                         <div>
                             <label class = "personal">Occupation</label>
-                            <span class = "label_input">Bread Baker</span>
+                            <span class = "label_input" id = "occupation"></span>
                         </div>
                          <div>
                             <label class = "personal">Language Spoken</label>
-                            <span class = "label_input">Twi</span>
+                            <span class = "label_input" id = "language"></span>
                         </div>
                         <div>
                             <label class = "personal">Religion</label>
-                            <span class = "label_input">Christianity</span>
+                            <span class = "label_input" id = "religion"></span>
                         </div>
                     </div>
                 </div>
                 <div class = "col-md-10">
                     <div class = "row">
                         <div class = "col-md-12">
-                            <h3 class = "name_title">Danielle Lovebird
-                                <a href = "viewProfile.html" style = "font-size: 0.5em;">
-                                    Dashboard
-                                </a>
-                            </h3>
+                            <h3 class = "name_title" id = "nameTitle"></h3>
+							<a href = "viewProfile.html" 
+							style = "text-align: center; display: block; border: none; cursor: pointer;">
+							<i class="fas fa-home" style = "color: #fff;"></i>
+							</a>
                         </div>
                     </div>
                     <div class = "row head_label_container">
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Condition</label>
-                            <span>Swollen Face</span>
+                            <span id = "condition"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
-                            <label class = "label_title_on_head">Purpose Of Donation</label>
-                            <span>Funding for surgery</span>
+                            <label class = "label_title_on_head">Purpose</label>
+                            <span id = "purposeOfDon"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Interview</label>
-                            <span>29th May, 2021</span>
+                            <span id = "mainInterview"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
-                            <label class = "label_title_on_head">Amount Donated</label>
-                            <span>GH$ 20.00</span>
+                            <label class = "label_title_on_head">Amt Donated</label>
+                            <span id = "amtDonated">GH&#162;</span>
                             </div>
                         </div>
                     </div>
@@ -123,68 +146,186 @@
                             </a>
                         </div>
                     </div>
-                    <div class = "row">
+					 <div class = "row">
                         <div class = "col-md-12">
-                            <div class = "condition_card">
-                               
-							     <div class = "condition_card" style = "margin-top: 1%;">
-							
+                           <div class = "condition_card" style = "margin-top: 1%;">
 								<!-- Create dimemnsions for tabs -->
 							<div class = "fluid-container">
 							<div class = "row">
 							<div class = "col-md-2">
 							<div style = "margin-top: 50%" class = "tab">
 								<span class = "btn nav-btn btn-nav" 
-								style = "width: 100%" id = "caseImageBtn"
-								>
-								<i class = "fa fa-print aria-hidden="true"></i>
+								style = "width: 100%" id = "caseImageBtn">
 								Case
 								</span>
 								<span class = "btn nav-btn btn-nav" 
 								style = "width: 100%; margin-top: 10%"  
-								id = "receiptImageBtn"
-								>
-								<i class = "fas fa-edit"></i>
+								id = "receiptImageBtn">
 								Receipt
+								</span>
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%; margin-top: 10%"  
+								id = "addImageBtn">
+								<i class="fas fa-user-plus"></i>
 								</span>
 							</div>
 							</div>
 							<div class = "col-md-10">
 							<div class = "tabcontent" id = "caseImages">
 							<!-- One -->
-							<div class = "tab-container">
 							<h4 class = "prof_title">Case Images</h4>
-							<div class = "container personalDetailsPro" >
-								<div class = "row personRow">
+							<div class = "container" >
+								<div class = "row" id = "loadCaseImage">
+								<!--
 								<div class = "col-md-4">
-									
-								</div>
+									<div class = "card" style = "overflow: hidden;">
+									<span>
+									<img src = "../image/emeka2.png" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+									</span>
+									<span>Image Title</span>
+									<span>Description</span>
+									<span class = "btn btn-warning" style = "display: inline-block">
+										Edit
+									</span>
+									<span class = "btn btn-danger" style = "display: inline-block">
+										Delete
+									</span>
+									</div>
+								</div> --
 								<div class = "col-md-4">
-									
-								</div>
+									<div class = "card" style = "overflow: hidden;">
+									<span>
+									<img src = "../image/emeka2.png" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+									</span>
+									<span>Image Title</span>
+									<span>Description</span>
+									<span class = "btn btn-warning" style = "display: inline-block">
+										Edit
+									</span>
+									<span class = "btn btn-danger" style = "display: inline-block">
+										Delete
+									</span>
+									</div>
+								</div> --
 								<div class = "col-md-4">
-									
-								</div>
+									<div class = "card" style = "overflow: hidden;">
+									<span>
+									<img src = "../image/emeka2.png" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+									</span>
+									<span>Image Title</span>
+									<span>Description</span>
+									<span class = "btn btn-warning" style = "display: inline-block">
+										Edit
+									</span>
+									<span class = "btn btn-danger" style = "display: inline-block">
+										Delete
+									</span>
+									</div>
+								</div> -->
 								</div>
 							</div>
-                            </div>
 							</div>
 							
 							<!--Two-->
 							<div class = "tabcontent" id = "receiptImages">
 							<!-- One -->
-							<div class = "tab-container">
 							<h4 class = "prof_title">Receipt Images</h4>
-							<div class = "container personalDetailsPro" >
-								<div class = "row personRow">
-								<div class = "col-md-4">
-									
+							<div class = "container">
+								<div class = "row" id = "loadReceiptImage">
+								<!--<div class = "col-md-4">
+									<div class = "card" style = "overflow: hidden;">
+									<span>
+									<img src = "../image/emeka2.png" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+									</span>
+									<span>Image Title</span>
+									<span>Description</span>
+									<span class = "btn btn-warning" style = "display: inline-block">
+										Edit
+									</span>
+									<span class = "btn btn-danger" style = "display: inline-block">
+										Delete
+									</span>
+									</div>
 								</div>
 								<div class = "col-md-4">
-									
+									<div class = "card" style = "overflow: hidden;">
+									<span>
+									<img src = "../image/emeka2.png" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+									</span>
+									<span>Image Title</span>
+									<span>Description</span>
+									<span class = "btn btn-warning" style = "display: inline-block">
+										Edit
+									</span>
+									<span class = "btn btn-danger" style = "display: inline-block">
+										Delete
+									</span>
+									</div>
 								</div>
 								<div class = "col-md-4">
-									
+									<div class = "card" style = "overflow: hidden;">
+									<span>
+									<img src = "../image/emeka2.png" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+									</span>
+									<span>Image Title</span>
+									<span>Description</span>
+									<span class = "btn btn-warning" style = "display: inline-block">
+										Edit
+									</span>
+									<span class = "btn btn-danger" style = "display: inline-block">
+										Delete
+									</span>
+								</div> 
+								</div> -->
+								</div>
+							</div>
+							</div>
+							
+							<!--Three-->
+							<div class = "tabcontent" id = "addImagesView">
+							<!-- One -->
+							<div>
+							<h4 class = "prof_title">Add Images</h4>
+							<div class = "container" >
+								<div class = "row">
+									<div class = "col-md-6">
+									 <div class="form-group">
+										<label>Images of condition</label>
+										<input type="file" id="getImage"/>
+									 </div>
+									</div>
+									<div class = "col-md-6">
+									 <div class="form-group">
+										<label>Type</label>
+										<select id="imgType" class = "form-control">
+										  <option value="receipt" selected>Receipt</option>
+										  <option value="images">Images</option>
+										</select>
+									 </div>
+									</div>
+								</div>
+								<div class = "row">
+									<div class = "col-md-12">
+									 <div class="form-group">
+										<label>Title</label>
+										<input type="text" id = "imageTitle" class = "form-control" placeholder = "Case 1"/>
+									 </div>
+									</div>
+								</div>
+								<div class = "row">
+									<div class = "col-md-12">
+									 <div class="form-group">
+										<label>Description</label>
+									<textArea class = "form-control" colspan = "3" id = "imageDesc"></textArea>
+									 </div>
+									</div>
+								</div>
+								<div class = "row">
+									<div class = "col-md-12">
+									<span class = "btn btn-primary" id = "submitImagesBtn">
+										Add Image
+									</span>
+									</div>
 								</div>
 								</div>
 							</div>
@@ -197,7 +338,6 @@
 							</div>
 							
 							
-                            </div>
 
                             </div>
                         </div>
@@ -208,7 +348,6 @@
         </div>
         <script>
 		require('../Js/imageDetails.js')
-           // require('../Js/renderViewProfile.js')
         </script>
     </body>
 </html>

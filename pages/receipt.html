@@ -4,88 +4,111 @@
         <meta charset="UTF-8">
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <title>De-Graft Johnson Foundation</title>
+		<link rel="stylesheet" type="text/css" href="../css/print.min.css">
         <link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
 		<link href = "../css/fontawesome/css/all.min.css" rel = "stylesheet" />
         <link href = "../css/style.css" rel = "stylesheet" />
+		<script src="../Js/print.min.js"></script>
     </head>
     <body>
+		<div id = "background_svg">
+		<svg x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;">
+	<style type="text/css">
+		.st0{fill:url(#SVGID_1_);}
+		.st1{opacity:0.1;fill:#FFFFFF;}
+	</style>
+	<g>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="233.25" y1="1175.25" x2="1686.75" y2="-278.25">
+			<stop  offset="0.3467" style="stop-color:#0D189E"/>
+			<stop  offset="0.7098" style="stop-color:#662D91"/>
+		</linearGradient>
+		<path class="st0" d="M1920,942c0,0-511.26,93-945,93c-413.26,0-975-93-975-93V-45h1920V942z"/>
+	</g>
+	<path class="st1" d="M1995.85,1177.3H-18.85c-137.05,0-248.15-111.1-248.15-248.15v0c0-137.05,111.1-248.15,248.15-248.15
+		c0,0,403.46,222.95,1007.35,222.95s1007.35-222.95,1007.35-222.95c137.05,0,248.15,111.1,248.15,248.15v0
+		C2244,1066.19,2132.9,1177.3,1995.85,1177.3z"/>
+	<path class="st1" d="M1970.13,1218.43l-2011.6-111.62c-136.84-7.59-241.62-124.68-234.02-261.52l0,0
+		c7.59-136.84,124.68-241.62,261.52-234.02c0,0,390.49,244.96,993.45,278.42c602.96,33.46,1018.15-166.8,1018.15-166.8
+		c136.84,7.59,241.62,124.68,234.02,261.52v0C2224.06,1121.24,2106.97,1226.02,1970.13,1218.43z"/>
+		</svg>
+		</div>
         <div class = "fluid-container">
             <div class = "row row_container">
                 <div class = "col-md-2 img_cont">
                     <div class = "profilePicContainer" id = "picContainer">
-                        <img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/>
+                        <!--<img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/> -->
                     </div>
                     <div class = "personalInfoOnClient">
                         <div>
-                            <label class = "personal">Case Id: DJF_09090</label>
+                            <label class = "personal" id = "caseId">Case Id:</label>
                         </div>
                         <div>
                             <label class = "personal">Name Of Patient</label>
-                            <span class = "label_input">Danielle Lovebird</span>
+                            <span class = "label_input" id = "nameOfPatient"></span>
                         </div>
                         <div>
                             <label class = "personal">Contact Of Patient</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "patientContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Name Of Caller</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "nameOfCaller"></span>
                         </div>
                          <div>
                             <label class = "personal">Caller Contact</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "callerContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Location</label>
-                            <span class = "label_input">North-Kaneshie</span>
+                            <span class = "label_input" id = "clientLocation"></span>
                         </div>
                         <div>
                             <label class = "personal">Occupation</label>
-                            <span class = "label_input">Bread Baker</span>
+                            <span class = "label_input" id = "occupation"></span>
                         </div>
                          <div>
                             <label class = "personal">Language Spoken</label>
-                            <span class = "label_input">Twi</span>
+                            <span class = "label_input" id = "language"></span>
                         </div>
                         <div>
                             <label class = "personal">Religion</label>
-                            <span class = "label_input">Christianity</span>
+                            <span class = "label_input" id = "religion"></span>
                         </div>
                     </div>
                 </div>
                 <div class = "col-md-10">
                     <div class = "row">
                         <div class = "col-md-12">
-                            <h3 class = "name_title">Danielle Lovebird
-                                <a href = "viewProfile.html" style = "font-size: 0.5em;">
-                                    Dashboard
-                                </a>
-                            </h3>
+                            <h3 class = "name_title" id = "nameTitle"></h3>
+							<a href = "viewProfile.html" 
+							style = "text-align: center; display: block; border: none; cursor: pointer;">
+							<i class="fas fa-home" style = "color: #fff;"></i>
+							</a>
                         </div>
                     </div>
                     <div class = "row head_label_container">
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Condition</label>
-                            <span>Swollen Face</span>
+                            <span id = "condition"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
-                            <label class = "label_title_on_head">Purpose Of Donation</label>
-                            <span>Funding for surgery</span>
+                            <label class = "label_title_on_head">Purpose</label>
+                            <span id = "purposeOfDon"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Interview</label>
-                            <span>29th May, 2021</span>
+                             <span id = "mainInterview"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
-                            <label class = "label_title_on_head">Amount Donated</label>
-                            <span>GH$ 20.00</span>
+                            <label class = "label_title_on_head">Amt Donated</label>
+                            <span id = "amtDonated">GH&#162;</span>
                             </div>
                         </div>
                     </div>
@@ -126,7 +149,7 @@
                     </div>
                     <div class = "row">
                         <div class = "col-md-12">
-                            <div class = "condition_card">
+                           <div class = "condition_card" style = "margin-top: 1%;">
                        
 									<!-- Create dimemnsions for tabs -->
 							<div class = "fluid-container">
@@ -134,35 +157,260 @@
 							<div class = "col-md-2">
 							<div style = "margin-top: 50%" class = "tab">
 								<span class = "btn nav-btn btn-nav" 
-								style = "width: 100%" id = "printReceiptBtn"
-								>
-								<i class = "fa fa-print aria-hidden="true"></i>
-								Print
+								style = "width: 100%" id = "receiptBtn">
+								Receipt
+								</span>
+								
+								<span class = "btn nav-btn btn-nav" 
+								style = "width: 100%; margin-top: 10%;" id = "statementBtn">
+								Statement
 								</span>
 							</div>
+							
 							</div>
 							<div class = "col-md-10">
 							<div class = "tabcontent" id = "receipt">
 							<!-- One -->
 							<div class = "tab-container">
-							<h4 class = "prof_title">Receipt</h4>
-							<label>Donation Received</label>
-							<p>
-							An amount of .......... was received from .............. 
-							to the De-Graft Johnson Foundation for <br/>
-							........................................................
-							</p>
-							<span style = "font-size: 0.5em;">
-							This Receipt is to show and testify that an amount was recieved
-							from the donor to the De-Graft Johnson team
+							<div class = "found_receipt" id = "receipt_print">
+							<h4 class = "prof_title">
+							<img src = "../image/de-graftLogo.png" alt = "logoImage" id = "deLogo"/>
+							De-Graft Johnson Foundation Receipt
+							</h4>
+							<div class = "section_one">
+							<label>Date<span class = "line"></span></label>
+							</div>
+							<div id = "receipt_block">
+							The De-Graft Johnson Foundation, on the date set forth above,
+							acknowledges an amount of <span class = "line2"></span>received in the 
+							form of <span class = "line3"></span> from <span class = "line4"></span>
+							</div>
+							<div id = "receipt_block2">
+							This is to share hope to less priviledged people interviewed by the 
+							De-Graft Johnson Foundation Team
+							</div>
+							<div id = "receipt_block3">
+							<label id = "ceoSpan">De-Graft Johnson Foundation (C.E.O)</label>
+							<div class = "line5"></div>
+							<div class = "signName">Richmond De-Graft Johnson</div>
+							</div>
+                            </div>
+							<span class = "btn btn-primary" id = "printReceiptBtn"
+							onclick="printJS('receipt_print', 'html')">
+							Print
 							</span>
-							<span>Signed</span><br/>
-							<span>.............</span>
-							<span>Mr Richmond De-Graft Johnson(CEO)</span>
+							</div>
+							</div>
+							<!--Two-->
+							<div class = "tabcontent" id = "statement">
+							<!-- One -->
+							<div class = "tab-container">
+							<div id = "statementPrint">
+							<h4 class = "prof_title" id = "nameRecord"></h4>
+							<h4 class = "prof_title">
+							<img src = "../image/de-graftLogo.png" alt = "logoImage" id = "deLogo"/>
+							De-Graft Johnson Foundation
+							</h4>
+							<h5 style = "text-align: center; font-weight: bold;">Statement</h5>
+							<div class = "container">
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Personal Information</h6>
+							</div>
+							</div>
+							</div>
+							<div class = "row">
+							<div class = "col-md-4 statement">
+							<div id = "prof_title_img">
+							</div>
+							<!--
+							<div class = "">
+							<img src = "../image/de-graftLogo.png" alt = "profile Pic" style = "width:200px; height: 200px;"/>
+							</div> -->
+							</div>
+							<div class = "col-md-4 statement">
+							<label id = "statement_id">Client Id:</label>
+							<label id = "statement_patientName">Name:</label>
+							<label id = "statement_patientCon">Contact:</label>
+							<label id = "statement_age">Age:</label>
+							<label id = "statement_sex">Sex:</label>
+							<label id = "statement_location">Location:</label>
+							<label id = "statement_occupation">Occupation:</label>
+							</div>
+							<div class = "col-md-4 statement">
+							<label id = "statement_callerName">Caller:</label>
+							<label id = "statement_callerContact">Caller Tel:</label>
+							<label id = "statement_maritalStatus">Marital Status:</label>
+							<label id = "statement_language">Language:</label>
+							<label id = "statement_religion">Religion:</label>
+							<label id = "statement_conditionSeverity">Condition:</label>
+							<label id = "statement_caseStatus">Case Status:</label>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Health Information</h6>
+							</div>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<table class= "table">
+							<thead>
+							<th>Condition</th>
+							<th>Purpose</th>
+							<th>Medical History</th>
+							</thead>
+							<tbody>
+							<tr>
+							<td><span style = "padding-left: 3%;" id = "statement_condition"></span></td>
+							<td><span style = "padding-left: 3%;" id = "statement_purpose"></span></td>
+							<td><span style = "padding-left: 3%;" id = "statement_medicalHistory"></span></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Interviews</h6>
+							</div>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<table class= "table">
+							<thead>
+							<th>No</th>
+							<th>Date</th>
+							<th>Description</th>
+							<th>Status</th>
+							</thead>
+							<tbody id = "statementInterviewRecord">
+							<!--Load Interview -->
+							</tbody>
+							</table>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Donations</h6>
+							</div>
+							</div>
+							</div>
+							<div class = "row">
+							<div class = "col-md-12">
+							<table class= "table">
+							<thead>
+							<th>Date</th>
+							<th>Purpose</th>
+							<th>Items</th>
+							<th>Amount GH&#162;</th>
+							</thead>
+							<tbody id = "statementDonationRecord">
+							</tbody>
+							</table>
+							<table class= "table">
+							<thead>
+							<th style = "text-align: right">Total</th>
+							<th id = "amtDonationTotal" style = "padding-left: 40%">GH&#162;</th>
+							</thead>
+							<tbody id = "statementDonationRecord">
+							</tbody>
+							</table>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Condition Update</h6>
+							</div>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<table class= "table">
+							<thead>
+							<th>No</th>
+							<th>Date</th>
+							<th>Condition</th>
+							</thead>
+							<tbody id = "statementConditionRecord">
+							<!-- Loading Condition Record -->
+							</tbody>
+							</table>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Images</h6>
+							</div>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<h5>Render All Images In card and can be magnified when clicked</h5>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<div style = "border: 1px solid #ededed; 
+							background: #ededed; margin-bottom: 2%;">
+							<h6 style = "font-weight: bold; margin: 0.2em;">Receipt</h6>
+							</div>
+							</div>
+							</div>
+							
+							<div class = "row">
+							<div class = "col-md-12">
+							<h5>Render All Receipt Images In card and can be magnified when clicked</h5>
+							</div>
+							</div>
+							</div>
+							</div>
+							
+							<div class = "container">
+							<div class = "row">
+							<div class = "col-md-12">
+							<span class = "btn btn-primary" id = "printReceiptBtn" 
+							onclick="printJS('statementPrint', 'html')">
+							Print
+							</span>
+							</div>
+							</div>
+							</div>
+							
+							</div>
+							</div>
+							</div>
                             </div>
 							</div>
 							
-							<!--Two-->
+							
+							
+							
+							
 							
                             </div>
 							</div>
@@ -183,7 +431,6 @@
         </div>
         <script>
 		require('../Js/receiptDetails.js')
-           // require('../Js/renderViewProfile.js')
         </script>
     </body>
 </html>

@@ -9,83 +9,104 @@
         <link href = "../css/style.css" rel = "stylesheet" />
     </head>
     <body>
+		<div id = "background_svg">
+			<svg x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;">
+		<style type="text/css">
+			.st0{fill:url(#SVGID_1_);}
+			.st1{opacity:0.1;fill:#FFFFFF;}
+		</style>
+		<g>
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="233.25" y1="1175.25" x2="1686.75" y2="-278.25">
+				<stop  offset="0.3467" style="stop-color:#0D189E"/>
+				<stop  offset="0.7098" style="stop-color:#662D91"/>
+			</linearGradient>
+			<path class="st0" d="M1920,942c0,0-511.26,93-945,93c-413.26,0-975-93-975-93V-45h1920V942z"/>
+		</g>
+		<path class="st1" d="M1995.85,1177.3H-18.85c-137.05,0-248.15-111.1-248.15-248.15v0c0-137.05,111.1-248.15,248.15-248.15
+			c0,0,403.46,222.95,1007.35,222.95s1007.35-222.95,1007.35-222.95c137.05,0,248.15,111.1,248.15,248.15v0
+			C2244,1066.19,2132.9,1177.3,1995.85,1177.3z"/>
+		<path class="st1" d="M1970.13,1218.43l-2011.6-111.62c-136.84-7.59-241.62-124.68-234.02-261.52l0,0
+			c7.59-136.84,124.68-241.62,261.52-234.02c0,0,390.49,244.96,993.45,278.42c602.96,33.46,1018.15-166.8,1018.15-166.8
+			c136.84,7.59,241.62,124.68,234.02,261.52v0C2224.06,1121.24,2106.97,1226.02,1970.13,1218.43z"/>
+			</svg>
+		</div>
         <div class = "fluid-container">
             <div class = "row row_container">
                 <div class = "col-md-2 img_cont">
                     <div class = "profilePicContainer" id = "picContainer">
-                        <img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/>
+                        <!--<img src = "../image/emeka2.png" alt = "profile picture" id = "profileImg"/> -->
                     </div>
                     <div class = "personalInfoOnClient">
                         <div>
-                            <label class = "personal">Case Id: DJF_09090</label>
+                            <label class = "personal" id = "caseId">Case Id:</label>
                         </div>
                         <div>
                             <label class = "personal">Name Of Patient</label>
-                            <span class = "label_input">Danielle Lovebird</span>
+                            <span class = "label_input" id = "nameOfPatient"></span>
                         </div>
                         <div>
                             <label class = "personal">Contact Of Patient</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "patientContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Name Of Caller</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "nameOfCaller"></span>
                         </div>
                          <div>
                             <label class = "personal">Caller Contact</label>
-                            <span class = "label_input">024 657 8900</span>
+                            <span class = "label_input" id = "callerContact"></span>
                         </div>
                         <div>
                             <label class = "personal">Location</label>
-                            <span class = "label_input">North-Kaneshie</span>
+                            <span class = "label_input" id = "clientLocation"></span>
                         </div>
                         <div>
                             <label class = "personal">Occupation</label>
-                            <span class = "label_input">Bread Baker</span>
+                            <span class = "label_input" id = "occupation"></span>
                         </div>
                          <div>
                             <label class = "personal">Language Spoken</label>
-                            <span class = "label_input">Twi</span>
+                            <span class = "label_input" id = "language"></span>
                         </div>
                         <div>
                             <label class = "personal">Religion</label>
-                            <span class = "label_input">Christianity</span>
+                            <span class = "label_input" id = "religion"></span>
                         </div>
                     </div>
                 </div>
                 <div class = "col-md-10">
                     <div class = "row">
                         <div class = "col-md-12">
-                            <h3 class = "name_title">Danielle Lovebird
-                                <a href = "viewProfile.html" style = "font-size: 0.5em;">
-                                    Dashboard
-                                </a>
-                            </h3>
+                            <h3 class = "name_title" id = "nameTitle"></h3>
+							<a href = "viewProfile.html" 
+							style = "text-align: center; display: block; border: none;">
+							<i class="fas fa-home" style = "color: #fff;"></i>
+							</a>
                         </div>
                     </div>
                     <div class = "row head_label_container">
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Condition</label>
-                            <span>Swollen Face</span>
+                            <span id = "condition"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
-                            <label class = "label_title_on_head">Purpose Of Donation</label>
-                            <span>Funding for surgery</span>
+                            <label class = "label_title_on_head">Purpose</label>
+                            <span id = "purposeOfDon"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
                             <label class = "label_title_on_head">Interview</label>
-                            <span>29th May, 2021</span>
+                             <span id = "mainInterview"></span>
                             </div>
                         </div>
                         <div class = "col-md-3">
                             <div class = "label_title_on_head_container">
-                            <label class = "label_title_on_head">Amount Donated</label>
-                            <span>GH$ 20.00</span>
+                            <label class = "label_title_on_head">Amt Donated</label>
+                            <span id = "amtDonated">GH&#162;</span>
                             </div>
                         </div>
                     </div>
@@ -135,17 +156,13 @@
 							<div class = "col-md-2">
 							<div style = "margin-top: 50%" class = "tab">
 								<span class = "btn nav-btn btn-nav" 
-								style = "width: 100%" id = "printDonationBtn"
-								>
-								<i class = "fa fa-print aria-hidden="true"></i>
-								Print
+								style = "width: 100%" id = "printDonationBtn">
+								<i class="fas fa-house-user"></i>
 								</span>
 								<span class = "btn nav-btn btn-nav" 
 								style = "width: 100%; margin-top: 10%"  
-								id = "addDonationBtn"
-								>
-								<i class = "fas fa-edit"></i>
-								Add
+								id = "addDonationBtn">
+								<i class="fas fa-user-plus"></i>
 								</span>
 							</div>
 							</div>
@@ -153,7 +170,7 @@
 							<div class = "tabcontent" id = "donationTable">
 							<!-- One -->
 							<div class = "tab-container">
-							<h4 class = "prof_title">Danielle Donation Record</h4>
+							<h4 class = "prof_title">Donation Record</h4>
 							<div class = "container personalDetailsPro" >
 								<div class = "row personRow">
 								<div class = "col-md-12">
@@ -163,44 +180,10 @@
 									<th>Date</th>
 									<th>Purpose</th>
 									<th>Items</th>
-									<th>Amount Donated</th>
+									<th>Amount</th>
 									</thead>
-									<tbody>
-									<tr>
-									    <td style = "text-align: center;">1</td>
-										<td style = "text-align: center;">29/07/20</td>
-										<td style = "text-align: center;">Hello world</td>
-										<td style = "text-align: center;">Drinks</td>
-										<td style = "text-align: center;">2,000</td>
-									</tr>
-									<tr>
-									    <td style = "text-align: center;">2</td>
-										<td style = "text-align: center;">8/02/21</td>
-										<td style = "text-align: center;">Condition One</td>
-										<td style = "text-align: center;">T-Roll</td>
-										<td style = "text-align: center;">2,500</td>
-									</tr>
-									<tr>
-									    <td style = "text-align: center;">3</td>
-										<td style = "text-align: center;">8/04/2</td>
-										<td style = "text-align: center;">Condition Two</td>
-										<td style = "text-align: center;">Water</td>
-										<td style = "text-align: center;">3,000</td>
-									</tr>
-									<tr>
-									    <td style = "text-align: center;">4</td>
-										<td style = "text-align: center;">8/04/20</td>
-										<td style = "text-align: center;">Condition Three</td>
-										<td style = "text-align: center;">Coffee</td>
-										<td style = "text-align: center;">1,000</td>
-									</tr>
-									<tr>
-									    <td style = "text-align: center;">5</td>
-										<td style = "text-align: center;">8/04/20</td>
-										<td style = "text-align: center;">Condition Four</td>
-										<td style = "text-align: center;">Tofees</td>
-										<td style = "text-align: center;">500</td>
-									</tr>
+									<tbody id = "loadingDonationRecord">
+									<!-- Donating Records -->
 									
 									</tbody>
 									</table>
@@ -222,35 +205,36 @@
 								<div class = "row personRow">
 								<div class = "col-md-12">
 									<label>Date:</label>
-									<input type = "date" class = "form-control"/>
+									<input type = "date" class = "form-control" id = "donationDate"/>
 								</div>
 								</div>
 								
 								<div class = "row personRow">
 								<div class = "col-md-12">
 									<label>Purpose:</label>
-									<textarea class = "form-control" rows="4"></textarea>
+									<textarea class = "form-control" rows="4" id = "donationPurpose"></textarea>
 								</div>
 								</div>
 								
 								<div class = "row personRow">
 								<div class = "col-md-12">
 									<label>Items:</label>
-									<input type = "text" class = "form-control"/>
+									<input type = "text" class = "form-control" id = "donationItems"/>
 								</div>
 								</div>
 								
 								<div class = "row personRow">
 								<div class = "col-md-12">
 									<label>Amount:</label>
-									<input type = "text" class = "form-control"/>
+									<input type = "text" class = "form-control" id = "donationAmt"/>
 								</div>
 								</div>
 													
 								<div class = "row personRow">
 								<div class = "col-md-12">
 									<button class = "btn btn-primary" 
-									style = "margin: 0 auto; margin-top: 2%;">
+									style = "margin: 0 auto; margin-top: 2%;"
+									id = "submitDonationBtn">
 										Add
 									</button>
 								</div>

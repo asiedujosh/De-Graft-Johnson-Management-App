@@ -101,21 +101,9 @@ h2 {
     font-weight: 600;
 }
 
-.btn {
-    display: block;
-    margin: 0 10px 0 10px;
-   /* border: 1px solid #f49602; */
-   /* background-color: #f49602; */
-    /*#076598*/
-    /*padding: 2px 5px 2px 5px;*/
-    width: 40%;
-    border-radius: 10px;
-    margin-top: 2%;
-    color: #fff;
-}
 
 .intro_btn {
-    margin-left: 10%;
+    margin-left: 30%;
     width: 100vw;
     text-align: center;
 }
@@ -158,7 +146,6 @@ textArea {
     width: 100%;
     height: 15vh;
     margin-bottom: 1%;
-
 }
 
 .submit {
@@ -171,9 +158,41 @@ textArea {
     font-weight: 700;
 }
 
+#background_svg{
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+}
+
+#nameTitle{
+	color: #fff;
+}
+
+.recordTable{
+	z-index: 1;
+	position: relative;
+	color: #fff;
+	font-size: 1.2em;
+}
+
 .record-info {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+.records_stats{
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.recordBtn{
+	width: 50%;
+	display: inline-block;
+	margin: 2px 2px;
 }
 
 .styled-table {
@@ -188,12 +207,14 @@ textArea {
 .styled-table thead tr {
     background-color: #02679d;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
+	margin: 0 auto;
 }
 
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
+	text-align: center;
 }
 
 .styled-table tbody tr {
@@ -250,14 +271,15 @@ textArea {
 }
 
 .label_title_on_head_container{
-    border: 1px solid #fff;
     height: 100%;
     width: 95%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgba(255, 255, 255, .15);  
+	backdrop-filter: blur(5px);
     padding-top: 5%;
     padding-bottom: 5%;
-    background: #fff;
+   /* background: #fff; */
     border-radius: 10px;
+	color: #fff;
 }
 
 span{
@@ -274,13 +296,16 @@ span{
 }
 
 .personalInfoOnClient{
-    border: 1px solid #fff;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgba(255, 255, 255, .15);  
+	backdrop-filter: blur(5px);
+    /*box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);*/
+    /*filter: blur(10px);*/
     margin-top: 15%;
     margin-left: 5%;
     height: 100vh;
     border-radius: 10px;
-    background: #fff;
+    /*background: #fff;*/
+	color: #fff;
 }
 
 .personal, .label_input{
@@ -298,17 +323,20 @@ span{
     font-weight: 200;
 }
 
-.cond_btn{
+.profBtn{
     width: 80%;
+	margin-left: 10%;
 }
 
 .condition_card, .donation_card{
-    border: 1px solid #fff;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgba(255, 255, 255, .15);  
+	backdrop-filter: blur(5px);
     border-radius: 10px;
     height: 70vh;
     margin-top: 5%;
-    background: #fff;
+   /* background: #fff; */
+   color: #fff;
+   padding: 5px;
 }
 
 table{
@@ -333,21 +361,21 @@ td{
 .nav-btn{
     width: 100%;
     width: 90%;
-    color: #000;
+    color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    background: #fff;
+    background: #433ca9;
 }
 
 .active{
-    background: #efefef;
+    background: #336180;
 }
 
 .nav-btn:hover{
-    background: #efefef;
+    background: #336180;
 }
 
 .btn-nav{
-	background: #efefef;
+	background: #5456bb;
 }
 
 .nav-btn:hover{
@@ -363,7 +391,29 @@ td{
     height: 60vh;
     overflow: scroll;
     overflow-x: hidden;
+}	/* width */
+
+::-webkit-scrollbar {
+  width: 5px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f0ad4e;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+	
+	
+
 
 a:-webkit-any-link{
     text-decoration:none !important;
@@ -408,4 +458,203 @@ a:-webkit-any-link{
 	overflow-y: scroll; 
 }
 
+.green, .greenstat{
+	color: green;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: green;
+	margin: 0 auto;
+}
 
+.red, .redstat{
+	color: red;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: red;
+	margin: 0 auto;
+}
+
+.found_receipt, #statementPrint{
+	text-align: left;
+	/*border: 2px solid #000;*/
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding-left: 3%;
+	border: 1px solid #fff;
+	background: #fff;
+	color: #000;
+	height: 70vh;
+}
+
+#statementPrint{
+	height: 500%;
+}
+
+.section_one{
+	margin-top: 5%;
+}
+
+#deLogo{
+	width: 100px;
+	height: 100px;
+}
+
+#receipt_block{
+	text-align: left;
+	line-height: 2.5em;
+}
+
+#receipt_block, #receipt_block2, #receipt_block3{
+	margin-top: 3%;
+}
+
+#ceoSpan{
+	font-size: 1em;
+}
+
+#signCeo{
+	font-size: 1em;
+}
+
+.line, .line2, .line3, .line4, .line5{
+	width: 150px;
+	border-bottom: 1px solid #dedede;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	display: inline-block;
+}
+
+.line4{
+	width: 200px;
+}
+
+.line5{
+	margin-top: 3%;
+	width: 280px;
+}
+
+.signName{
+	font-weight: bold;
+}
+
+.statement label{
+	font-size: 0.8em;
+}
+
+.djf-intro{
+	color: #fff;
+	margin-top: 5%;
+}
+
+#printBtn{
+	margin: 0 auto;
+	width: 40%;
+	margin-bottom: 5%;
+}
+
+#printReceiptBtn{
+	width: 40%;
+	margin: 0 auto;
+	display: block;
+}
+
+#prof_title_img{
+	border: 1px solid #fff;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	height: 25vh;
+	overflow: hidden;
+}
+
+#searchHold{
+	display: inline-block;
+	border-radius: 20px;
+	height: 5vh;
+	border: none;
+	outline: none;
+	padding-left: 5%;
+	font-size: 1.2em;
+}
+
+#searchHold:focus{
+	outline: none;
+}
+
+#logo{
+  animation-duration: 1.2s;
+  animation-name: logoAnimation;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes logoAnimation{
+  from{
+    transform: translateX(0) translateY(0);
+    opacity: 0.5;
+  }
+  to{
+    transform: translateX(10px) translateY(-10px);
+    opacity: 1;
+  }
+}
+
+
+
+.home_btn{
+	display: block;
+    margin: 0 10px 0 10px;
+    border: 1px solid #f49602; 
+    background-color: #f49602; 
+    width: 20%;
+    border-radius: 10px;
+    margin-top: 2%;
+	transition: width 1.2s;
+}
+
+.home_btn:hover{
+	width: 22%;
+}
+
+
+
+.home_btn a{
+	color: #fff;
+}
+
+.button_submit{
+	margin: 5%;
+}
+
+#font_table{
+	display: none;
+	border: 1px solid #fff;
+	background: #fff;
+	border-radius: 10px;
+}
+
+#profileInsert, #profileFail, #styleErrorCard{
+	display: none;
+	width: 400px;
+	height: 130px;
+	border: 1px solid #fff;
+	background: #fff;
+	color: #000;
+	margin: 0 auto;
+	margin-top: -45%;
+	border-radius: 20px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#styleErrorCard{
+	height: 200px;
+}
+
+#ok, #ok2, #ok3{
+	text-align: center;
+	width: 20%;
+	margin: 0 auto;
+	display: block;
+}

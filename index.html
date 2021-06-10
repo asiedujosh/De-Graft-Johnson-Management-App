@@ -8,39 +8,110 @@
 	<link href = "css/style.css" rel = "stylesheet" />
   </head>
   <body>
-    <div class = "container intro-face">
-        	<div class = "row">
-	        	<div class = "col-md-4">
-					<div class = "Logo-container">
-					<img src = "image/de-graftLogo.png" alt = "De-Graft Johnson Logo" class = "Logo" />
-					</div>
-				</div>
-				<div class = "col-md-8 djf-intro">
-					<h2>De-Graft Johnson Foundation</h2>
-					<span>Cases Management Portal</span>
-					<div class ="intro_btn">
-						<span class = "btn">
-							<a href = "pages/newClient.html">
-								New Case
-							</a>
-						</span>
+  <svg x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{opacity:0.1;fill:#FFFFFF;}
+</style>
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="233.25" y1="1175.25" x2="1686.75" y2="-278.25">
+		<stop  offset="0.3467" style="stop-color:#0D189E"/>
+		<stop  offset="0.7098" style="stop-color:#662D91"/>
+	</linearGradient>
+	<path class="st0" d="M1920,942c0,0-511.26,93-945,93c-413.26,0-975-93-975-93V-45h1920V942z"/>
+</g>
+<path class="st1" d="M1995.85,1177.3H-18.85c-137.05,0-248.15-111.1-248.15-248.15v0c0-137.05,111.1-248.15,248.15-248.15
+	c0,0,403.46,222.95,1007.35,222.95s1007.35-222.95,1007.35-222.95c137.05,0,248.15,111.1,248.15,248.15v0
+	C2244,1066.19,2132.9,1177.3,1995.85,1177.3z"/>
+<path class="st1" d="M1970.13,1218.43l-2011.6-111.62c-136.84-7.59-241.62-124.68-234.02-261.52l0,0
+	c7.59-136.84,124.68-241.62,261.52-234.02c0,0,390.49,244.96,993.45,278.42c602.96,33.46,1018.15-166.8,1018.15-166.8
+	c136.84,7.59,241.62,124.68,234.02,261.52v0C2224.06,1121.24,2106.97,1226.02,1970.13,1218.43z"/>
+</svg>
+    <div class = "container intro-face" style = "margin-top: -50%">
+	<div class = "row">
+	<div class = "col-md-10">
+	<input type = "text"  placeholder = "Search" 
+	style= "width: 100%;" id = "searchHold"/>
+	</div>
+	<div class = "col-md-2">
+	<span class = "btn btn-primary" style = "width: 100%; margin-top: -1%; margin-left: -15%;" 
+	id = "searchHoldBtn">
+	Search
+	</span>
+	</div>
+	</div>
+	
+	<!--Mysterious table -->
+	<div class = "row">
+	<div class = "col-md-12">
+	 <div id = "font_table">
+        <table style = "margin: 0 auto;">
+			<thead>
+			<tr>
+			<td>Id</td>
+			<td>Case Id</td>
+			<td>Patient Name</td>
+			<td>Contact</td>
+			<td>Condition</td>
+			<td>Purpose</td>
+			<td>Severity</td>
+			<td>Benefits</td>
+			<td colspan = "2">Action</td>
+			</tr>
+			</thead>
+			<tbody id = "resultsOfSearch">
+			<!--I am getting data from database here-->
+			</tbody>
+		</table>
+		<span id = "close_table_card" class = "btn btn-primary" 
+		style = "display: block; text-align: center; width: 20%; margin: 0 auto;">
+			X
+		</span>
+     </div>
+	</div>
+	</div>
+    
+	<div class = "row">
+	   <div class = "col-md-4">
+		  <div class = "Logo-container">
+			<img src = "image/de-graftLogo.png" alt = "De-Graft Johnson Logo" class = "Logo" id = "logo"
+			style = "border-radius: 50%; width: 200px; height: 200px; margin-top: 30%; margin-left: 35%;"/>
+		  </div>
+		  <span style = "text-align: center; 
+		  color: #fff;margin-top: 2%; 
+		  font-size: 0.7em; margin-left: 12%;
+		  display: block;">
+			App Developed by J. Asiedu
+		  </span>
+		</div>
+		<div class = "col-md-8 djf-intro">
+			<h2 style = "font-size: 2.5em">De-Graft Johnson Foundation</h2>
+			<span>Cases Management Portal</span>
+			<div class ="intro_btn">
+				<span class = "btn home_btn">
+					<a href = "pages/newClient.html">
+						New Case
+					</a>
+				</span>
 
-						<span class = "btn">
-							<a href = "pages/records.html">
-								Records
-							</a>
-						</span>
+				<span class = "btn home_btn">
+					<a href = "pages/records.html">
+						Records
+					</a>
+				</span>
 
-						<span class = "btn">
-							<a href = "pages/closedCases.html">
-								Closed Cases
-							</a>
-						</span>
-
-					</div>
-				</div>
+				<span class = "btn home_btn">
+					<a href = "pages/closedCases.html">
+						Closed Cases
+					</a>
+				</span>
 			</div>
 		</div>
+	</div>
+</div>
     <!-- You can also require other files to run in this process -->
+<script>
+    require('./Js/index.js')
+</script>
   </body>
 </html>

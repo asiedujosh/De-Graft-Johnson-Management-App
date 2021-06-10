@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Case Id</label>
-                        <input type="text" class="form-control" id="caseId" value="DJF-10234" />
+                        <input type="text" class="form-control" id="caseId" readonly/>
                     </div>
                 </div>
             </div>
@@ -87,13 +87,16 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Age</label>
-                        <input type="text" class="form-control" id="age" placeholder="Age" />
+                        <input type="number" class="form-control" id="age" placeholder="Age" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Sex</label>
-                        <input type="text" class="form-control" id="sex" placeholder="Sex" />
+						<select id="sex" class = "form-control">
+							<option value="Male" selected>Male</option>
+							<option value="Female">Female</option>
+						</select>
                     </div>
                 </div>
             </div>
@@ -101,7 +104,10 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Marital Status</label>
-                        <input type="text" class="form-control" id="maritalStatus" placeholder="Condition" />
+						<select id="maritalStatus" class = "form-control">
+							<option value="Single" selected>Single</option>
+							<option value="Married">Married</option>
+						</select>
                     </div>
                 </div>
                 <div class="col-md-6 col-md-push-1">
@@ -121,7 +127,13 @@
                 <div class="col-md-6 col-md-push-1">
                     <div class="form-group">
                         <label>Condition Severity</label>
-                        <input type="text" class="form-control" id="conditionSeverity" placeholder="status" />
+						<select id="conditionSeverity" class = "form-control">
+							<option value="1" selected>1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
                     </div>
                 </div>
             </div>
@@ -142,27 +154,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <label class="form-group">Medical History</label>
-                    <textArea colspan="3" class="form-control" id="medicalHistory" rows="3"></textArea>
+                    <textArea colspan="3" class="form-control" id="medicalHistory" rows="3"
+					style = "width: 100%;"></textArea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <label class="form-group">Condition Description</label>
-                    <textArea colspan="3" class="form-control" id="conditionDiscription" rows="3"></textArea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Images of condition</label>
-                        <input type="file" id="sickConditionImage" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Processing Stage</label>
-                        <input type="text" class="form-control" id="processingStage" placeholder="Processing Stage" />
-                    </div>
+                    <textArea colspan="3" class="form-control" id="conditionDiscription" rows="3"
+					style = "width: 100%;"></textArea>
                 </div>
             </div>
             <div class="row">
@@ -171,7 +171,7 @@
                     <input type="text" class="form-control" id="hearOfDjf" placeholder="" />
                 </div>
             </div>
-            <div class="row button">
+            <div class="row button_submit">
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
@@ -183,6 +183,28 @@
                 </div>
             </div>
         </div>
+
+		<div class = "card" id = "profileInsert">
+		<p style = "text-align: center; margin-top: 5%; font-size: 1.2em;">Data Saved Successfully</p>
+		<span></span>
+		<span class = "btn btn-success" 
+		id = "ok">Ok</span>
+		</div> 
+		
+		<div class = "card" id = "profileFail">
+		<p style = "text-align: center; margin-top: 5%; font-size: 1.2em;">Oops Action Failed</p>
+		<span></span>
+		<span class = "btn btn-danger" 
+		id = "ok2">Ok</span>
+		</div> 
+		
+		<!-- Loop out errors -->
+		<div class = "card" id = "styleErrorCard">
+		<p style = "text-align: center; margin-top: 5%; font-size: 1.2em;">Notice</p>
+		<div id = "logoutErrors"></div>
+		<span class = "btn btn-danger" 
+		id = "ok3">Ok</span>
+		</div> 
     </div>
     <!-- You can also require other files to run in this process -->
     <script>

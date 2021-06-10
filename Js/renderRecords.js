@@ -1,39 +1,49 @@
-window.onload = ()=> {
 const { electron, ipcRenderer } = require("electron")
-let sqlite3 = require('sqlite3').verbose()
-let DJF_database = new sqlite3.Database('./djf_database.sqlite3')
 
 //Getting the tableBody and appending
 let tableBody = document.getElementById('tableBody')
+let caseNo = document.getElementById('caseNo')
+let beneficiaryNo = document.getElementById('beneficiaryNo')
+let closeNo = document.getElementById('closeNo')
+
 //let getBtn = document.querySelectorAll(".viewcase")
 
-let LoadData = () => {
-    let sql = `SELECT * FROM djf_client`;
-    DJF_database.all(sql, [], (err, rows) => {
-    if (err) {
-    throw err
-    }
-    rows.forEach((row) => {
-    //console.log(row.nameOfPatient);
-    //Appending Rows to table body
-    tableBody.innerHTML += `<tr>
-    <td>${row.id}</td>
-    <td>${row.caseId}</td>
-    <td>${row.nameOfPatient}</td>
-    <td>${row.patientContact}</td>
-    <td>${row.nameOfCondition}</td>
-    <td>${row.purposeOfContact}</td>
-    <td>${row.conditionSeverity}</td>
-    <td><span class = "btn btn-primary" onclick="location.href = 'viewProfile.html?caseId=${row.caseId}'">View</span></td>
-    <td><a href = "">Delete Case</a></td>
+//Render Records 
+ipcRenderer.send('get_data_on_records')
+ipcRenderer.on('reply_get_records', (event, arg) => {
+	tableBody.innerHTML += `<tr>
+    <td>${arg.id}</td>
+    <td>${arg.caseId}</td>
+    <td>${arg.nameOfPatient}</td>
+    <td>${arg.patientContact}</td>
+    <td>${arg.nameOfCondition}</td>
+    <td>${arg.purposeOfContact}</td>
+    <td>${arg.conditionSeverity}</td>
+	<td><span class = ${arg.benefit > 1 ? "green" : "red"}></span></td>
+    <td>
+	<span class = "btn btn-primary recordBtn" onclick="location.href = 'viewProfile.html?caseId=${arg.caseId}'">View</span>
+    <span class = "btn btn-danger recordBtn" onclick="location.href = 'deleteRecords.html?caseId=${arg.caseId}'">Delete</span>
+	</td>
     </tr>
     <tr>`
-        })
-    })
-    DJF_database.close()
-  }
-  LoadData()
-}
+	})
+	
+//Count Records
+ipcRenderer.on('reply_count_records', (event, arg) => {
+		caseNo.innerHTML = `${arg.countId}`
+	}) 
+	
+//Count Beneficials
+ipcRenderer.on('reply_count_beneficials', (event, arg) => {
+		beneficiaryNo.innerHTML = `${arg.countBenefits}`
+	})
+	
+//Count Case
+ipcRenderer.on('reply_count_caseClose', (event, arg) => {
+		closeNo.innerHTML = `${arg.countCaseClose}`
+	})
+
+
 
 
 /*let secondLoad = () =>{

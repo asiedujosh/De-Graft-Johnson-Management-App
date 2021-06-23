@@ -1,4 +1,4 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const fs = require('fs')
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
@@ -7,6 +7,29 @@ const urlGet = urlParams.get('caseId')
 let donationId = urlGet;
 
 clientId = localStorage.getItem("caseId")
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
+
 
 let frame = document.getElementById("picContainer")
 let caseId = document.getElementById("caseId")
@@ -50,7 +73,21 @@ let deleteNo = document.getElementById("deleteNo")
     })
 
 
-
+let mainInterview = document.getElementById("mainInterview")
+	ipcRenderer.send('get_top_interview_date', clientId)
+	ipcRenderer.on('reply_top_interview_date', (event, arg) => {
+		let convertDate = arg.interviewDate
+		let interviewDate = convertDate.split("-")
+		//console.log(interviewDate)
+		let mainDate = new Date(interviewDate[0], interviewDate[1], interviewDate[2]);
+		//console.log(mainDate)
+		let g = mainDate.toString()
+		//let secondPhase = mainDate.split(" ")
+		//let secondDate = secondPhase[0]+" "+secondPhase[1]+" "+secondPhase[2]
+		let v = g.split(" ")
+		let currentDate = v[0]+" "+v[1]+", "+v[2]+" "+v[3]
+		mainInterview.innerHTML = currentDate
+		})
 	
 	/*
 	let viewButton = document.getElementById("viewButton")
@@ -59,11 +96,8 @@ let deleteNo = document.getElementById("deleteNo")
 	}) */
 //Add Donation
 let donationToDelete = () => {
-let donationItems = {
-	id: donationId
-}
 //Function to add Condition to database
-ipcRenderer.invoke('delete_Donation', donationItems)
+ipcRenderer.invoke('delete_Donation', donationId)
 	.then((result) => {
         console.log("Sent Message")
 		window.location.href = 'viewProfile.html'

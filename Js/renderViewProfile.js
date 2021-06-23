@@ -3,6 +3,28 @@ const remote = require('electron').remote
 const main = remote.require('./main.js')
 
 
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
+
 const fs = require('fs')
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)

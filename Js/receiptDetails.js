@@ -1,6 +1,30 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const fs = require('fs')
 let clientId = localStorage.getItem("caseId")
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
+
+
 
 let frame = document.getElementById("picContainer")
 let caseId = document.getElementById("caseId")
@@ -41,6 +65,8 @@ let statementInterviewRecord = document.getElementById("statementInterviewRecord
 let statementDonationRecord = document.getElementById("statementDonationRecord")
 let amtDonationTotal = document.getElementById("amtDonationTotal")
 let statementConditionRecord = document.getElementById("statementConditionRecord")
+let statementImageCase = document.getElementById("statementImageCase")
+let statementReceiptCase = document.getElementById("statementReceiptCase")
 
 
 let mainInterview = document.getElementById("mainInterview")
@@ -137,6 +163,67 @@ ipcRenderer.on('reply_to_conditionUpdate', (event, arg) => {
 		<td style = "text-align: center;">${arg.condition}</td>
 		</tr>`
 	})
+	
+	
+//Rendering Images Of Case 
+let imageInfo = {
+	clientId : clientId,
+	type: "images"
+}
+ipcRenderer.send('get_case_Img_One', imageInfo)
+ipcRenderer.on('reply_data_case_one', (event, arg) => {
+	console.log(imageInfo)
+	if(arg.title){
+		let buf = new Buffer(arg.imagePro)
+		let image = buf.toString('base64')
+	 statementImageCase.innerHTML += `
+		<div class = "col-md-4">
+			<div class = "card" style = "overflow: hidden;">
+			<span>
+			<img src = "data:image/png;base64,${image}" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+			</span>
+			<span>${arg.title}</span>
+			<span>${arg.description}</span>
+			</div>
+		</div>`
+	} else {
+		console.log("No Arg")
+	}
+	/*
+	if(arg){
+	
+	} else {
+		loadCaseImage.innerHTML += `
+		<div> No Data </div>
+		`
+	} */
+	})
+
+
+//Rendering Receipt Of Case 
+imageInfo.type = "receipt"
+ipcRenderer.send('get_case_Img_Two', imageInfo)
+ipcRenderer.on('reply_data_case_two', (event, arg) => {
+	console.log(imageInfo)
+	if(arg.title){
+		let buf = new Buffer(arg.imagePro)
+		let image = buf.toString('base64')
+	statementReceiptCase.innerHTML += `
+		<div class = "col-md-4">
+			<div class = "card" style = "overflow: hidden;">
+			<span>
+			<img src = "data:image/png;base64,${image}" alt = "profile picture" style = "height: 250px; width: 250px;"/>
+			</span>
+			<span>${arg.title}</span>
+			<span>${arg.description}</span>
+			</div>
+		</div>`
+	} else {
+	loadReceiptImage.innerHTML += `<div> No Data </div>`
+	}
+	})
+
+
 
 
 //For personal detail page

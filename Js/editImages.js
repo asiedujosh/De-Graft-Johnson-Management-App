@@ -1,4 +1,4 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const remote = require('electron').remote
 const main = remote.require('./main.js')
 
@@ -10,6 +10,27 @@ const urlGet = urlParams.get('Id')
     console.log(urlGet)
 let clientId = localStorage.getItem("caseId")
 
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
 
 
 let frame = document.getElementById("picContainer")

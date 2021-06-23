@@ -1,4 +1,4 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const fs = require('fs')
 let clientId = localStorage.getItem("caseId")
 
@@ -19,6 +19,34 @@ let purposeOfDon = document.getElementById("purposeOfDon")
 let nameRecord = document.getElementById("nameRecord")
 let loadCaseImage = document.getElementById("loadCaseImage")
 let loadReceiptImage = document.getElementById("loadReceiptImage")
+const ok = document.getElementById("ok")
+const styleErrorCard = document.getElementById("styleErrorCard")
+const ok3 = document.getElementById("ok3")
+const profileInsert = document.getElementById("profileInsert")
+
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
+
 
 //Get Data to display Profile Details
 ipcRenderer.send('get_data_on_client', clientId)
@@ -73,7 +101,7 @@ ipcRenderer.on('reply_data_case_one', (event, arg) => {
 	loadCaseImage.innerHTML += `
 		<div class = "col-md-4">
 			<div class = "card" style = "overflow: hidden;">
-			<span>
+			<span onclick="location.href = 'expandImage.html?Id=${arg.id}'">
 			<img src = "data:image/png;base64,${image}" alt = "profile picture" style = "height: 250px; width: 250px;"/>
 			</span>
 			<span>${arg.title}</span>
@@ -113,7 +141,7 @@ ipcRenderer.on('reply_data_case_two', (event, arg) => {
 	loadReceiptImage.innerHTML += `
 		<div class = "col-md-4">
 			<div class = "card" style = "overflow: hidden;">
-			<span>
+			<span onclick="location.href = 'expandImage.html?Id=${arg.id}'">
 			<img src = "data:image/png;base64,${image}" alt = "profile picture" style = "height: 250px; width: 250px;"/>
 			</span>
 			<span>${arg.title}</span>
@@ -160,11 +188,48 @@ let gatherImageInfo = () => {
 	}
 
 
+let clearInfo = () =>{
+	imageTitle.value = ""
+	imageDesc.value = ""
+}
+
+let Validation_errors = []
+//Validation
+let validation = () => {
+	if(!imageTitle.value) return Validation_errors.push("No Image Title")
+	if(!imageDesc.value) return Validation_errors.push("No Image Description")
+	}
+
 submitImagesBtn.addEventListener("click", ()=>{
-	gatherImageInfo()
+	validation()
+//console.log(Validation_errors)	
+	if(Validation_errors.length){
+		console.log(Validation_errors)
+		styleErrorCard.style.display = "block"
+		logoutErrors.innerHTML += Validation_errors.map((val)=>{
+			return(
+				`<ul style = "display: block; width: 100%; text-align: center;">
+				<li style = "display: block; width: 100%;">${val}</li>
+				</ul>`
+				)
+			})
+		} else {
+		gatherImageInfo()
+		profileInsert.style.display = "block"
+		}
 })
 
+ok.addEventListener("click",()=>{
+		profileInsert.style.display = "none"
+		clearInfo()
+	})
 
+ok3.addEventListener("click",()=>{
+		styleErrorCard.style.display = "none" 
+		logoutErrors.innerHTML = ""
+		Validation_errors = []
+		clearInfo()
+	})
 
 //For personal detail page
 let firstButton = document.getElementById("caseImageBtn")

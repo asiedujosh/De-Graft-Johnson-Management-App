@@ -1,6 +1,29 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const fs = require('fs')
 let clientId = localStorage.getItem("caseId")
+
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
 
 let frame = document.getElementById("picContainer")
 let caseId = document.getElementById("caseId")
@@ -18,6 +41,10 @@ let purposeOfDon = document.getElementById("purposeOfDon")
 let nameRecord = document.getElementById("nameRecord")
 let amtDonated = document.getElementById("amtDonated")
 let submitConditionBtn = document.getElementById("submitConditionBtn")
+const ok = document.getElementById("ok")
+const styleErrorCard = document.getElementById("styleErrorCard")
+const ok3 = document.getElementById("ok3")
+const profileInsert = document.getElementById("profileInsert")
 
 //Rendering to table
 let loadingConditionRecord = document.getElementById("loadingConditionRecord")
@@ -73,26 +100,68 @@ ipcRenderer.on('reply_to_conditionUpdate', (event, arg) => {
 		mainInterview.innerHTML = currentDate
 		})
 
-	
+
+let clearInfo = () =>{
+	document.getElementById("conditionDate").value = ""
+	document.getElementById("conditionText").value = ""
+}
+
+
+
+let Validation_errors = []
+//Validation
+let validation = () => {
+	if(!conditionDate.value) return Validation_errors.push("No Date Available")
+	if(!conditionText.value) return Validation_errors.push("Condition Not Available")
+	}
 
 //Add Condition
 let addCondition = () => {
 //Adding Conditions
-let conditionDate = document.getElementById("conditionDate").value
-let conditionText = document.getElementById("conditionText").value
+let conditionDate = document.getElementById("conditionDate")
+let conditionText = document.getElementById("conditionText")
 
+validation()
+
+//console.log(Validation_errors)	
+
+	if(Validation_errors.length){
+		console.log(Validation_errors)
+		styleErrorCard.style.display = "block"
+		logoutErrors.innerHTML += Validation_errors.map((val)=>{
+			return(
+				`<ul style = "display: block; width: 100%; text-align: center;">
+				<li style = "display: block; width: 100%;">${val}</li>
+				</ul>`
+				)
+			})
+		} else {
 let conditionInfo = {
 	caseId : clientId,
-	conDate : conditionDate,
-	condText : conditionText
+	conDate : conditionDate.value,
+	condText : conditionText.value
 }
-//console.log(conditionInfo)
+console.log(conditionInfo)
 //Function to add Condition to database
 ipcRenderer.invoke('submit_add_Condition', conditionInfo)
 	.then((result) => {
         console.log("Sent Message")
+		profileInsert.style.display = "block"
     })
+	}
 }
+
+ok.addEventListener("click",()=>{
+		profileInsert.style.display = "none"
+		clearInfo()
+	})
+
+ok3.addEventListener("click",()=>{
+		styleErrorCard.style.display = "none" 
+		logoutErrors.innerHTML = ""
+		Validation_errors = []
+		clearInfo()
+	})
 
 //Click event that calls adding addition
 submitConditionBtn.addEventListener("click",()=>{

@@ -48,11 +48,13 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1100,
         height: 750,
+		frame: false,
+		icon: __dirname + `/icon/logo2.png`,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
-            preload: path.join(__dirname, 'preload.js')
+           // preload: path.join(__dirname, 'preload.js')
         }
     })	
 
@@ -60,7 +62,7 @@ function createWindow() {
     mainWindow.loadFile('index.html')
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
 }
 
 
@@ -97,14 +99,14 @@ ipcMain.handle('submit_helper_info', async (event, Argument) => {
 
 //Search Query 
 ipcMain.on('get_result_from_search', (event, arg) => {
-	console.log(arg)
+	//console.log(arg)
 	let sql = `SELECT id, caseId, nameOfPatient, patientContact, nameOfCondition, purposeOfContact, conditionSeverity, benefit FROM djf_client WHERE nameOfPatient LIKE ?`;
 	 DJF_database.all(sql, [arg], (err, rows) => {
     if (err) {
     throw err
     }
     if(rows){
-    console.log(rows);
+    //console.log(rows);
     //Appending Rows to table body
 	event.sender.send('reply_result_from_search', rows[0])
         }
@@ -117,7 +119,7 @@ ipcMain.on('get_result_from_search', (event, arg) => {
 
 //Select user from database
 ipcMain.on('get_data_on_client', (event, arg) => {
-    console.log(arg)
+    //console.log(arg)
     let profileInfo = {}
 	let donorAmt = {}
     DJF_database.get("SELECT * FROM djf_client WHERE caseId = ?",
@@ -146,7 +148,7 @@ ipcMain.on('get_data_on_client', (event, arg) => {
 				profileInfo.hearingMedium = row.hearingMedium
 				profileInfo.caseStatus = row.caseStatus
                 }
-				console.log(profileInfo)
+				//console.log(profileInfo)
                // event.sender.send('reply_info', profileInfo)
 				DJF_database.get("SELECT SUM(amountDonated) AS amt FROM support WHERE caseId = ?",[arg],
 				(err, row) => {
@@ -156,7 +158,7 @@ ipcMain.on('get_data_on_client', (event, arg) => {
 				if(row){
 					if(row.amt){
 					profileInfo.amountDonated = row.amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-					console.log(donorAmt)
+					//console.log(donorAmt)
 					//profileInfo.amountDonated = row.amountDonated
 					} else {
 						profileInfo.amountDonated = 0.00
@@ -169,6 +171,7 @@ ipcMain.on('get_data_on_client', (event, arg) => {
             //console.log(profileInfo)
             //Event emitter
 		})
+		
 
 //Select All Data for records
 ipcMain.on('get_data_on_records', (event, arg) => {
@@ -191,7 +194,7 @@ ipcMain.on('get_data_on_records', (event, arg) => {
     throw err
     }
     if(rows){
-    console.log(rows[0]);
+    //console.log(rows[0]);
     //Appending Rows to table body
 	event.sender.send('reply_count_records', rows[0])
         }
@@ -204,7 +207,7 @@ ipcMain.on('get_data_on_records', (event, arg) => {
     throw err
     }
     if(rows){
-    console.log(rows[0]);
+    //console.log(rows[0]);
     //Appending Rows to table body
 	event.sender.send('reply_count_beneficials', rows[0])
         }
@@ -217,7 +220,7 @@ ipcMain.on('get_data_on_records', (event, arg) => {
     throw err
     }
     if(rows){
-    console.log(rows[0]);
+    //console.log(rows[0]);
     //Appending Rows to table body
 	event.sender.send('reply_count_caseClose', rows[0])
         }
@@ -226,6 +229,62 @@ ipcMain.on('get_data_on_records', (event, arg) => {
 })
 
 
+
+
+//Select All Data for records where case Id is equal to closed
+ipcMain.on('get_data_on_records_caseClose', (event, arg) => {
+	let sql = `SELECT id, caseId, nameOfPatient, patientContact, nameOfCondition, purposeOfContact, conditionSeverity, benefit FROM djf_client WHERE caseStatus = ? ORDER BY id DESC`;
+	 DJF_database.all(sql, ["close"], (err, rows) => {
+    if (err) {
+    throw err
+    }
+    rows.forEach((row) => {
+    //console.log(row.nameOfPatient);
+    //Appending Rows to table body
+	event.sender.send('reply_get_records_caseClose', row)
+        })
+    })
+	//Get number of people
+	let sql2 = `SELECT COUNT(*) AS countId FROM djf_client`;
+	DJF_database.all(sql2, [], (err, rows) => {
+    if (err) {
+    throw err
+    }
+    if(rows){
+    //console.log(rows[0]);
+    //Appending Rows to table body
+	event.sender.send('reply_count_records', rows[0])
+        }
+    }) 
+	
+	//Get number of people
+	let sql3 = `SELECT COUNT(*) AS countBenefits FROM djf_client WHERE benefit = ?`;
+	DJF_database.all(sql3, [2], (err, rows) => {
+    if (err) {
+    throw err
+    }
+    if(rows){
+    //console.log(rows[0]);
+    //Appending Rows to table body
+	event.sender.send('reply_count_beneficials', rows[0])
+        }
+    })
+	
+	//Get number of closed case
+	let sql4 = `SELECT COUNT(*) AS countCaseClose FROM djf_client WHERE caseStatus = ?`;
+	DJF_database.all(sql4, ["close"], (err, rows) => {
+    if (err) {
+    throw err
+    }
+    if(rows){
+    //console.log(rows[0]);
+    //Appending Rows to table body
+	event.sender.send('reply_count_caseClose', rows[0])
+        }
+    })
+})
+
+	
 
 
 //Select All Data from condition
@@ -288,7 +347,7 @@ ipcMain.on('get_data_on_interviewUpdate', (event, arg)=>{
 
 //Select Data From a condition Table
 ipcMain.on('get_data_for_condition', (event, arg) => {
-    console.log(arg)
+    //console.log(arg)
     let conditionInfo = {}
     DJF_database.get("SELECT * FROM conditionUpdate WHERE id = ?",
 	[arg], (err, row) => {
@@ -299,16 +358,15 @@ ipcMain.on('get_data_for_condition', (event, arg) => {
 				conditionInfo.dater = row.dater
                 conditionInfo.condition = row.condition
                 }
-				console.log(conditionInfo)
+				//console.log(conditionInfo)
 			 event.sender.send('reply_data_for_condition', conditionInfo)
             })
-			
 		})
 		
 
 //Select Data From a donation Table
 ipcMain.on('get_data_for_donation', (event, arg) => {
-    console.log(arg)
+    //console.log(arg)
     let donationInfo = {}
     DJF_database.get("SELECT * FROM support WHERE id = ?",
 	[arg], (err, row) => {
@@ -321,7 +379,7 @@ ipcMain.on('get_data_for_donation', (event, arg) => {
 				donationInfo.amountDonated = row.amountDonated
 				donationInfo.purposeOfSupport = row.purposeOfSupport
                 }
-				console.log(donationInfo)
+				//console.log(donationInfo)
 			 event.sender.send('reply_data_for_donation', donationInfo)
             })
 		})
@@ -332,7 +390,7 @@ ipcMain.on('get_data_for_donation', (event, arg) => {
 //Edit Data In database
 ipcMain.handle('submit_edit', async (event, Argument) => {
 	let data = [Argument.callerName, Argument.callerContact, Argument.clientName, Argument.clientContact, Argument.Location, Argument.occupation, Argument.Age, Argument.sex, Argument.maritalStatus, Argument.Condition, Argument.purposeOfContact, Argument.conditionSeverity, Argument.languageSpoken, Argument.Religion, Argument.medicalHistory, Argument.hearingMedium, Argument.clientId]
-	console.log(Argument)
+	//console.log(Argument)
 	let sql = `UPDATE djf_client SET nameOfCaller = ?, callerContact = ?, nameOfPatient = ?, patientContact = ?, location = ?, occupation = ?, age = ?, sex = ?, maritalStatus = ?, nameOfCondition = ?, purposeOfContact = ?, conditionSeverity = ?, languageSpoken = ?, religion = ?, medicalHistory = ?, hearingMedium = ? WHERE caseId = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -346,7 +404,7 @@ ipcMain.handle('submit_edit', async (event, Argument) => {
 
 //Add Condition
 ipcMain.handle('submit_add_Condition', async (event, Argument) => {
-	console.log(Argument)
+	//console.log(Argument)
     //Insert into some argument fields
     DJF_database.run('INSERT INTO conditionUpdate(caseId, condition, dater) VALUES (?,?,?)',
         [Argument.caseId, Argument.condText, Argument.conDate],
@@ -357,7 +415,7 @@ ipcMain.handle('submit_add_Condition', async (event, Argument) => {
 //Edit Condition Update
 ipcMain.handle('submit_update_Condition', async (event, Argument) => {
 	let data = [Argument.conditionText, Argument.dater, Argument.id]
-	console.log(data)
+	//console.log(data)
 	let sql = `UPDATE conditionUpdate SET condition = ?, dater = ? WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -373,7 +431,7 @@ ipcMain.handle('submit_update_Condition', async (event, Argument) => {
 //Edit Donate Update
 ipcMain.handle('submit_update_Donation', async (event, Argument) => {
 	let data = [Argument.donateItem, Argument.donatePurpose, Argument.donateAmt, Argument.donateDate, Argument.id]
-	console.log(data)
+	//console.log(data)
 	let sql = `UPDATE support SET support = ?, purposeOfSupport = ?, amountDonated = ?, dateOfSupport = ? WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -388,8 +446,25 @@ ipcMain.handle('submit_update_Donation', async (event, Argument) => {
 //Edit Interview Update
 ipcMain.handle('update_Interview', async (event, Argument) => {
 	let data = [Argument.InStatus, Argument.id]
-	console.log(data)
+	//console.log(data)
 	let sql = `UPDATE interview SET status = ? WHERE id = ?`;
+    //Insert into some argument fields
+    DJF_database.run(sql, data, (err)=>{
+		if(err){
+			return console.error(err.message)
+		}
+		console.log("Successful")
+	})
+        //(err) => console.log(err))
+})
+
+
+
+//Edit Case Status 2
+ipcMain.handle('CloseCase', async (event, Argument) => {
+	let data = [Argument.caseStatus, Argument.clientId]
+	console.log(data)
+	let sql = `UPDATE djf_client SET caseStatus = ? WHERE caseId = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
 		if(err){
@@ -404,7 +479,7 @@ ipcMain.handle('update_Interview', async (event, Argument) => {
 //Delete Condition
 ipcMain.handle('delete_Condition', async (event, Argument) => {
 	let data = [Argument]
-	console.log(data)
+	//console.log(data)
 	let sql = `DELETE FROM conditionUpdate WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -419,7 +494,7 @@ ipcMain.handle('delete_Condition', async (event, Argument) => {
 //Delete Donation
 ipcMain.handle('delete_Donation', async (event, Argument) => {
 	let data = [Argument]
-	console.log(data)
+	//console.log(data)
 	let sql = `DELETE FROM support WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -435,7 +510,7 @@ ipcMain.handle('delete_Donation', async (event, Argument) => {
 //Delete Interview
 ipcMain.handle('delete_Interview', async (event, Argument) => {
 	let data = [Argument]
-	console.log(data)
+	//console.log(data)
 	let sql = `DELETE FROM interview WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -451,7 +526,7 @@ ipcMain.handle('delete_Interview', async (event, Argument) => {
 //Delete Record
 ipcMain.handle('delete_Record', async (event, Argument) => {
 	let data = [Argument]
-	console.log(data)
+	//console.log(data)
 	let sql = `DELETE FROM djf_client WHERE caseId = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -480,7 +555,7 @@ ipcMain.handle('delete_Record', async (event, Argument) => {
 			return console.error(err.message)
 		}
 	})
-	let sql5 = `DELETE FROM interview WHERE caseId = ?`;
+	let sql5 = `DELETE FROM additionalImages WHERE caseId = ?`;
     //Insert into some argument fields
     DJF_database.run(sql5, data, (err)=>{
 		if(err){
@@ -491,19 +566,29 @@ ipcMain.handle('delete_Record', async (event, Argument) => {
 })
 
 
-
 //Add Donation
 ipcMain.handle('submit_add_Donation', async (event, Argument) => {
-	console.log(Argument)
+	//console.log(Argument)
     //Insert into some argument fields
     DJF_database.run('INSERT INTO support(caseId, supportId, support, purposeOfSupport, amountDonated, dateOfSupport) VALUES (?,?,?,?,?,?)',
         [Argument.caseId, Argument.donationId, Argument.donationItems, Argument.donationPurpose, Argument.donationAmt, Argument.donationDate],
         (err) => console.log(err))
+		
+	//Update benefit
+	let sql = `UPDATE djf_client SET benefit = ? WHERE caseId = ?`;
+    //Insert into some argument fields
+    DJF_database.run(sql, [2, Argument.caseId], (err)=>{
+		if(err){
+			return console.error(err.message)
+		}
+		console.log("Successful")
+	})
+	
 })
 
 //Add Interview
 ipcMain.handle('submit_add_Interview', async (event, Argument) => {
-	console.log(Argument)
+	//console.log(Argument)
 	//Insert into some argument fields
     DJF_database.run('INSERT INTO interview(caseId, interviewDate, description, status) VALUES (?,?,?,?)',
         [Argument.caseId, Argument.interviewDate, Argument.interviewDescription, Argument.interviewStatus],
@@ -514,7 +599,7 @@ ipcMain.handle('submit_add_Interview', async (event, Argument) => {
 //Get Case Images One
 ipcMain.on('get_case_Img_One', (event, arg) => {
 	let data = [arg.clientId, arg.type]
-    console.log(arg)
+    //console.log(arg)
     let caseImgInfo = {}
     DJF_database.get("SELECT * FROM additionalImages WHERE caseId = ? AND type = ?",
 	data, (err, row) => {
@@ -537,7 +622,7 @@ ipcMain.on('get_case_Img_One', (event, arg) => {
 //Get Case Images Two
 ipcMain.on('get_case_Img_Two', (event, arg) => {
 	let data = [arg.clientId, arg.type]
-    console.log(arg)
+    //console.log(arg)
     let caseImgInfo = {}
     DJF_database.get("SELECT * FROM additionalImages WHERE caseId = ? AND type = ?",
 	data, (err, row) => {
@@ -559,7 +644,7 @@ ipcMain.on('get_case_Img_Two', (event, arg) => {
 		
 //Select Individual Images
 ipcMain.on('get_unique_case_Img', (event, arg) => {
-    console.log(arg)
+    //console.log(arg)
     let caseImgInfo = {}
     DJF_database.get("SELECT * FROM additionalImages WHERE id = ?",
 	[arg], (err, row) => {
@@ -599,14 +684,14 @@ ipcMain.handle('update_case_with_image', async (event, Argument) => {
 	const base64 = fs.readFileSync( Argument.imagePro, "base64")
     Argument.imagePro = Buffer.from(base64, "base64")
 	let data = [Argument.imagePro, Argument.title, Argument.desc, Argument.id]
-	console.log(data)
+	//console.log(data)
 	let sql = `UPDATE additionalImages SET images = ?, title = ?, description = ? WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
 		if(err){
 			return console.error(err.message)
 		}
-		console.log("Successful")
+		//console.log("Successful")
 	})
         //(err) => console.log(err))
 })
@@ -615,23 +700,24 @@ ipcMain.handle('update_case_with_image', async (event, Argument) => {
 //Edit Images Update with image
 ipcMain.handle('update_case_without_image', async (event, Argument) => {
 	let data = [Argument.title, Argument.desc, Argument.id]
-	console.log(data)
+	//console.log(data)
 	let sql = `UPDATE additionalImages SET title = ?, description = ? WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
 		if(err){
 			return console.error(err.message)
 		}
-		console.log("Successful")
+		//console.log("Successful")
 	})
         //(err) => console.log(err))
 })
 
 
+
 //Delete Interview
 ipcMain.handle('delete_Images', async (event, Argument) => {
 	let data = [Argument]
-	console.log(data)
+	//console.log(data)
 	let sql = `DELETE FROM additionalImages WHERE id = ?`;
     //Insert into some argument fields
     DJF_database.run(sql, data, (err)=>{
@@ -667,3 +753,4 @@ app.on('window-all-closed', function() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+

@@ -1,6 +1,28 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const fs = require('fs')
 let clientId = localStorage.getItem("caseId")
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
 
 
 
@@ -18,6 +40,14 @@ let nameTitle = document.getElementById("nameTitle")
 let condition = document.getElementById("condition")
 let amtDonated = document.getElementById("amtDonated")
 let purposeOfDon = document.getElementById("purposeOfDon")
+const ok = document.getElementById("ok")
+const styleErrorCard = document.getElementById("styleErrorCard")
+const ok3 = document.getElementById("ok3")
+const profileInsert = document.getElementById("profileInsert")
+const closeCase = document.getElementById("closeCase")
+const addNameToTitle = document.getElementById("addNameToTitle")
+const addNameToSentence = document.getElementById("addNameToSentence")
+
 
 //Id Specific for personal details
 let personalClientName = document.getElementById("personalClientName")
@@ -77,6 +107,8 @@ ipcRenderer.send('get_data_on_client', clientId)
 		nameTitle.innerHTML = `${arg.nameOfPatient}`
 		condition.innerHTML = `${arg.nameOfCondition}`
 		purposeOfDon.innerHTML = `${arg.purposeOfContact}`
+		addNameToTitle.innerHTML += ` ${arg.nameOfPatient}`
+		addNameToSentence.innerHTML += ` ${arg.nameOfPatient}`
 		
 		personalClientName.innerHTML += `${arg.nameOfPatient}`
 		personalClientContact.innerHTML += `${arg.patientContact}`
@@ -131,6 +163,30 @@ let mainInterview = document.getElementById("mainInterview")
 		mainInterview.innerHTML = currentDate
 		})
 
+
+let closeCaseRun = () => {
+	let clientInfo = {
+	clientId : clientId,
+	caseStatus: "close"
+	}
+//Function to add Condition to database
+ipcRenderer.invoke('CloseCase', clientInfo)
+	.then((result) => {
+        console.log("Sent Message")
+		window.location.href = 'setInterview.html'
+    })
+}
+
+
+//Close Case
+closeCase.addEventListener("click", ()=>{
+		closeCaseRun()
+	})
+	//window.location.href = 'personalDetails.html'
+
+
+
+
 	
 	
 //For personal detail page
@@ -171,6 +227,35 @@ thirdButton.addEventListener("click",()=>{
 })
 
 
+
+ok.addEventListener("click",()=>{
+		profileInsert.style.display = "none"
+		//clearInfo()
+	})
+
+ok3.addEventListener("click",()=>{
+		styleErrorCard.style.display = "none" 
+		logoutErrors.innerHTML = ""
+		Validation_errors = []
+		//clearInfo()
+	})
+
+let Validation_errors = []
+//Validation
+let validation = () => {
+	if(editClientName.value == "") return Validation_errors.push("Patient Name is empty")
+	if(editClientContact.value == "") return Validation_errors.push("Patient Contact is empty")
+	if(editAge.value == "") return Validation_errors.push("Patient Age is empty")
+	if(editCondition.value == "") return Validation_errors.push("Name of condition is empty")
+	if(editPurposeOfContact.value == "") return Validation_errors.push("Purpose of contact is empty")
+	
+	//Check If patient Contact is exactly or less than 10 digits
+	let valNo = editClientContact.value.split("")
+	if(valNo.length < 10) return Validation_errors.push("Patient Contact Number Incorrect")
+	if(valNo.length > 10) return Validation_errors.push("Patient Contact Number Incorrect")
+}
+
+
 //Edit function
 let EditPersonalDetail = () => {
 	let clientEdit = {
@@ -193,10 +278,28 @@ let EditPersonalDetail = () => {
 		hearingMedium: editHearingMedium.value
 	}
 	console.log(clientEdit)
+	
+	validation()
+
+//console.log(Validation_errors)	
+
+	if(Validation_errors.length){
+		console.log(Validation_errors)
+		styleErrorCard.style.display = "block"
+		logoutErrors.innerHTML += Validation_errors.map((val)=>{
+			return(
+				`<ul style = "display: block; width: 100%; text-align: center;">
+				<li style = "display: block; width: 100%;">${val}</li>
+				</ul>`
+				)
+			})
+		} else {
 	ipcRenderer.invoke('submit_edit', clientEdit).then((result) => {
         console.log("Sent Message")
-    })
-}
+		profileInsert.style.display = "block"
+		})
+		}
+	}
 
 editButton.addEventListener("click",()=>{
 	EditPersonalDetail()

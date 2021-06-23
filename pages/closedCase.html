@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>De-Graft Johnson Foundation</title>
+	<link href = "../css/bootstrap/css/bootstrap.min.css" rel = "stylesheet" />
+	<link href = "../css/fontawesome/css/all.min.css" rel = "stylesheet" />
+	<link href = "../css/style.css" rel = "stylesheet" />
+  </head>
+  <body>
+  <div id = "background_svg">
+  <svg x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;">
+		<style type="text/css">
+			.st0{fill:url(#SVGID_1_);}
+			.st1{opacity:0.1;fill:#FFFFFF;}
+		</style>
+		<g>
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="233.25" y1="1175.25" x2="1686.75" y2="-278.25">
+				<stop  offset="0.3467" style="stop-color:#0D189E"/>
+				<stop  offset="0.7098" style="stop-color:#662D91"/>
+			</linearGradient>
+			<path class="st0" d="M1920,942c0,0-511.26,93-945,93c-413.26,0-975-93-975-93V-45h1920V942z"/>
+		</g>
+		<path class="st1" d="M1995.85,1177.3H-18.85c-137.05,0-248.15-111.1-248.15-248.15v0c0-137.05,111.1-248.15,248.15-248.15
+			c0,0,403.46,222.95,1007.35,222.95s1007.35-222.95,1007.35-222.95c137.05,0,248.15,111.1,248.15,248.15v0
+			C2244,1066.19,2132.9,1177.3,1995.85,1177.3z"/>
+		<path class="st1" d="M1970.13,1218.43l-2011.6-111.62c-136.84-7.59-241.62-124.68-234.02-261.52l0,0
+			c7.59-136.84,124.68-241.62,261.52-234.02c0,0,390.49,244.96,993.45,278.42c602.96,33.46,1018.15-166.8,1018.15-166.8
+			c136.84,7.59,241.62,124.68,234.02,261.52v0C2224.06,1121.24,2106.97,1226.02,1970.13,1218.43z"/>
+		</svg> 
+	</div>
+	<header class = "Navbar">
+		<span class = "Nav_left">
+		<img src = "../image/de-graftLogo.png" alt = "logo" style="width: 15px; height: 15px;"/>
+		De-Graft Johnson Foundation
+		</span>
+		<span class = "Nav_right">
+		<ul>
+		<li id = "minimize_button"><i class = "fas fa-window-minimize"></i></li>
+		<li id = "maximize_button"><i class = "fas fa-window-maximize"></i></li>
+		<li id = "close_button"><i class = "fas fa-window-close"></i></li>
+		</ul>
+		</span>
+	</header>
+  <div class = "recordTable" style = "margin-top: 3%;">
+			<h4 class = "head-title">
+			Records On Closed Cases
+			</h4>
+			<span class = "back">
+				<a href = "../index.html">
+					<i class="fas fa-home" style = "color: #fff;"></i>
+				</a>
+			</span>
+			<div class = "record-info">
+				<label class = "records_stats">No Of Cases<span id = "caseNo"></span></label>
+				<label class = "records_stats">No Of Beneficiaries<span id = "beneficiaryNo"></span></label>
+				<label class = "records_stats">No Of Closed Cases<span id = "closeNo"></span></label>
+			</div>
+			<div>
+			<div id = "tbodyContainer">
+			<table class = "styled-table">
+				<thead>
+				<tr>
+				<td>Id</td>
+				<td>Case Id</td>
+				<td>Patient Name</td>
+				<td>Contact</td>
+				<td>Condition</td>
+				<td>Purpose</td>
+				<td>Severity</td>
+				<td>Benefits</td>
+				<td colspan = "2">Action</td>
+				</tr>
+				</thead>
+				<tbody id = "tableBody">
+				<!--I am getting data from database here-->
+				</tbody>
+			</table>
+			</div>
+			</div>
+		</div>
+	<!-- You can also require other files to run in this process -->
+		<script>
+		require('../Js/renderCaseClose.js')
+		</script>
+  </body>
+</html>

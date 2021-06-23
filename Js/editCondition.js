@@ -1,4 +1,4 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 const fs = require('fs')
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
@@ -7,6 +7,29 @@ const urlGet = urlParams.get('caseId')
 let conditionId = urlGet;
 
 clientId = localStorage.getItem("caseId")
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
+
 
 let frame = document.getElementById("picContainer")
 let caseId = document.getElementById("caseId")
@@ -27,6 +50,10 @@ let loadingDonationRecord = document.getElementById("loadingDonationRecord")
 let updateCondBtn = document.getElementById("updateCondBtn")
 let condDate = document.getElementById("condDate")
 let condText = document.getElementById("condText")
+const ok = document.getElementById("ok")
+const styleErrorCard = document.getElementById("styleErrorCard")
+const ok3 = document.getElementById("ok3")
+const profileInsert = document.getElementById("profileInsert")
 
 
 
@@ -50,6 +77,22 @@ let condText = document.getElementById("condText")
 		purposeOfDon.innerHTML = `${arg.purposeOfContact}`
 		amtDonated.innerHTML += `${arg.amountDonated}`
     })
+	
+	let mainInterview = document.getElementById("mainInterview")
+	ipcRenderer.send('get_top_interview_date', clientId)
+	ipcRenderer.on('reply_top_interview_date', (event, arg) => {
+		let convertDate = arg.interviewDate
+		let interviewDate = convertDate.split("-")
+		//console.log(interviewDate)
+		let mainDate = new Date(interviewDate[0], interviewDate[1], interviewDate[2]);
+		//console.log(mainDate)
+		let g = mainDate.toString()
+		//let secondPhase = mainDate.split(" ")
+		//let secondDate = secondPhase[0]+" "+secondPhase[1]+" "+secondPhase[2]
+		let v = g.split(" ")
+		let currentDate = v[0]+" "+v[1]+", "+v[2]+" "+v[3]
+		mainInterview.innerHTML = currentDate
+		})
 
 
  ipcRenderer.send('get_data_for_condition', conditionId)
@@ -59,25 +102,61 @@ let condText = document.getElementById("condText")
     })
 
 	
-	/*
-	let viewButton = document.getElementById("viewButton")
-	viewButton.addEventListener("click",()=>{
-		main.openWindow()
-	}) */
+let Validation_errors = []
+//Validation
+let validation = () => {
+	if(!condDate.value) return Validation_errors.push("No Date Available")
+	if(!condText.value) return Validation_errors.push("Condition Not Available")
+	}
+	
+	
 //Add Donation
 let updateCondition = () => {
-let updateCondition = {
-	id: conditionId,
-	dater : condDate.value,
-	conditionText : condText.value 
-}
-console.log(updateCondition)
-//Function to add Condition to database
-ipcRenderer.invoke('submit_update_Condition', updateCondition)
-	.then((result) => {
-        console.log("Sent Message")
-    })
-}
+
+validation()
+
+//console.log(Validation_errors)	
+
+	if(Validation_errors.length){
+		console.log(Validation_errors)
+		styleErrorCard.style.display = "block"
+		logoutErrors.innerHTML += Validation_errors.map((val)=>{
+			return(
+				`<ul style = "display: block; width: 100%; text-align: center;">
+				<li style = "display: block; width: 100%;">${val}</li>
+				</ul>`
+				)
+			})
+		} else {
+		
+		let updateCondition = {
+			id: conditionId,
+			dater : condDate.value,
+			conditionText : condText.value 
+		}
+	console.log(updateCondition)
+	//Function to add Condition to database
+	ipcRenderer.invoke('submit_update_Condition', updateCondition)
+		.then((result) => {
+			console.log("Sent Message")
+			profileInsert.style.display = "block"
+		})
+	  }
+	}
+	
+ok.addEventListener("click",()=>{
+		profileInsert.style.display = "none"
+		clearInfo()
+	})
+
+ok3.addEventListener("click",()=>{
+		styleErrorCard.style.display = "none" 
+		logoutErrors.innerHTML = ""
+		Validation_errors = []
+		clearInfo()
+	})
+
+
 	
 updateCondBtn.addEventListener("click", ()=>{
 	updateCondition()

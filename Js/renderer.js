@@ -1,4 +1,4 @@
-const { electron, ipcRenderer } = require("electron")
+const { electron, remote, ipcRenderer } = require("electron")
 
 //Function to dynamically generate case id 
 let caseNo = () => {
@@ -10,6 +10,28 @@ let caseNo = () => {
 }
 
 let caseIdVal = caseNo()
+
+//Window close Minimize and Maximize function
+const minimize_button = document.getElementById("minimize_button")
+const maximize_button = document.getElementById("maximize_button")
+const close_button = document.getElementById("close_button")
+
+minimize_button.addEventListener("click",()=>{
+	remote.getCurrentWindow().minimize()
+})
+
+maximize_button.addEventListener("click",()=>{
+	const currentWindow = remote.getCurrentWindow()
+	if(currentWindow.isMaximized()){
+		currentWindow.unmaximize()
+	} else {
+		currentWindow.maximize()
+	}
+})
+
+close_button.addEventListener("click",()=>{
+	remote.app.quit()
+})
 
 
 const caseId = document.getElementById("caseId").value = caseIdVal
@@ -76,8 +98,8 @@ let validation = () => {
 	
 	//Check If patient Contact is exactly or less than 10 digits
 	let valNo = patientContact.value.split("")
-	if(valNo.length < 10) return Validation_errors.push("Patient Number is less than expected")
-	if(valNo.length > 10) return Validation_errors.push("Patient Number is more than expected")
+	if(valNo.length < 10) return Validation_errors.push("Patient Contact Number Incorrect")
+	if(valNo.length > 10) return Validation_errors.push("Patient Contact Number Incorrect")
 }
 
 let gatherInfo = () => {

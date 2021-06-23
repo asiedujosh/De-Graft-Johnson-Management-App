@@ -30,8 +30,21 @@
 			c136.84,7.59,241.62,124.68,234.02,261.52v0C2224.06,1121.24,2106.97,1226.02,1970.13,1218.43z"/>
 		</svg> 
 	</div>
-  <div class = "recordTable">
-			<h4 class = "head-title" style = "margin-top: 2%;">
+	<header class = "Navbar">
+		<span class = "Nav_left">
+		<img src = "../image/de-graftLogo.png" alt = "logo" style="width: 15px; height: 15px;"/>
+		De-Graft Johnson Foundation
+		</span>
+		<span class = "Nav_right">
+		<ul>
+		<li id = "minimize_button"><i class = "fas fa-window-minimize"></i></li>
+		<li id = "maximize_button"><i class = "fas fa-window-maximize"></i></li>
+		<li id = "close_button"><i class = "fas fa-window-close"></i></li>
+		</ul>
+		</span>
+	</header>
+  <div class = "recordTable" style = "margin-top: 3%;">
+			<h4 class = "head-title">
 			Records On Active Cases
 			</h4>
 			<span class = "back">
@@ -45,6 +58,7 @@
 				<label class = "records_stats">No Of Closed Cases<span id = "closeNo"></span></label>
 			</div>
 			<div>
+			<div id = "tbodyContainer">
 			<table class = "styled-table">
 				<thead>
 				<tr>
@@ -60,9 +74,12 @@
 				</tr>
 				</thead>
 				<tbody id = "tableBody">
+				
 				<!--I am getting data from database here-->
 				</tbody>
+				
 			</table>
+			</div>
 			</div>
 		</div>
 	<!-- You can also require other files to run in this process -->
